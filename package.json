@@ -1,0 +1,42 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-amplify/auth": "^6.3.4",
+    "@aws-amplify/ui-react": "^6.1.12",
+    "@aws-sdk/client-dynamodb": "^3.587.0",
+    "@tsparticles/engine": "^3.4.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.4.0",
+    "@types/js-cookie": "^3.0.6",
+    "aws-amplify": "^6.3.4",
+    "aws-sdk": "^2.1631.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.6",
+    "js-cookie": "^3.0.5",
+    "next": "14.2.3",
+    "next-themes": "^0.3.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.10.2",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

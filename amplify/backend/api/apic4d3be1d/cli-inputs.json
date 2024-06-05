@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/mail": {
+      "name": "/mail",
+      "lambdaFunction": "nbustudio65de7524",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

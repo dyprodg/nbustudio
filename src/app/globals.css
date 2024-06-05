@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-color: #000000;
+  --background-color: #ff6c2c;
+}
+
+.dark {
+  --foreground-color: #ff6c2c;
+  --background-color: #000000;
+}
+
+body {
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+/* globals.css oder eine andere globale CSS-Datei */
+@layer utilities {
+  .radial-gradient-light {
+    mask-image: radial-gradient(350px 200px at top, transparent 20%, white);
+  }
+  .radial-gradient-dark {
+    mask-image: radial-gradient(350px 200px at top, transparent 20%, black);
+  }
+}

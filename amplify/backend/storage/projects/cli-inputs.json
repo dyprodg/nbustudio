@@ -1,0 +1,10 @@
+{
+  "resourceName": "projects",
+  "tableName": "projects",
+  "partitionKey": {
+    "fieldName": "postId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
