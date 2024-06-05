@@ -5,11 +5,37 @@ import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from '@/amplifyconfiguration.json';
+import { post } from 'aws-amplify/api';
+import { fetchAuthSession } from '@aws-amplify/auth';
 Amplify.configure(config);
+
 
 function Page({ signOut, user }: WithAuthenticatorProps) {
     const [postTitle, setPostTitle] = useState('');
     const [postDesc, setPostDesc] = useState('');
+
+    const handlePost = async () => {
+        const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
+        try {
+            const restOperation = post({
+                apiName: 'post',
+                path: '/create',
+                options: {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`, 
+                    }
+                }
+            });
+
+            const { body } = await restOperation.response;
+            const response = await body.json();
+
+            console.log('POST call succeeded');
+            console.log(response);
+        } catch (e) {
+            console.log('POST call failed: ', JSON.parse((e as any).response.body));
+        }
+    };
 
     return (
         <div className='flex mt-20 flex-col w-full min-h-screen '>
@@ -38,6 +64,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     onChange={(e) => setPostDesc(e.target.value)}
                 />
                 <button
+                    onClick={handlePost}
                     className='text-2xl border hover:scale-105 p-4 hover:cursor-pointer active:scale-95 transition ease-in-out duration-100 bg-black'
                 >
                     Erstellen

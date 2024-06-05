@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-nbustudio-dev-76f6a-unauthRole",
       "StackName": "amplify-nbustudio-dev-76f6a",
       "StackId": "arn:aws:cloudformation:eu-central-1:851725466763:stack/amplify-nbustudio-dev-76f6a/e31cd530-18f0-11ef-957f-0ae25a50374b",
-      "AmplifyAppId": "d1dmmqqrri7s3k"
+      "AmplifyAppId": "d1dmmqqrri7s3k",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nbustudio-dev-76f6a-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "hosting": {
@@ -22,10 +23,15 @@
         "nbustudio65de7524": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
           "s3Key": "amplify-builds/nbustudio65de7524-6f534e385a6e35435278-build.zip"
+        },
+        "postcreate": {
+          "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
+          "s3Key": "amplify-builds/postcreate-6e38736b4a6d4b567955-build.zip"
         }
       },
       "api": {
-        "apic4d3be1d": {}
+        "apic4d3be1d": {},
+        "post": {}
       },
       "auth": {
         "nbustudiod032f512": {}
