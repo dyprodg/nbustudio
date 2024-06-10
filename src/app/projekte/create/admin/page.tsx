@@ -23,6 +23,15 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                 options: {
                     headers: {
                         Authorization: `Bearer ${authToken}`, 
+                    },
+                    body: {
+                        "type": "image",
+                        "title": "test",
+                        "description": "This is a test video description.",
+                        "url": "https://example.com/test-video",
+                        "artist": "Test Artist",
+                        "year": "2024",
+                        "link": "https://example.com"
                     }
                 }
             });
