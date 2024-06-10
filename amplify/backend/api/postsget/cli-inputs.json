@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/get": {
+      "name": "/get",
+      "lambdaFunction": "postsget",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

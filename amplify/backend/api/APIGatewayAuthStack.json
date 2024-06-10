@@ -16,6 +16,9 @@
     },
     "post": {
       "Type": "String"
+    },
+    "postsget": {
+      "Type": "String"
     }
   },
   "Conditions": {

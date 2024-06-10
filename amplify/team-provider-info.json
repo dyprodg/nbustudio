@@ -27,11 +27,16 @@
         "postcreate": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
           "s3Key": "amplify-builds/postcreate-313363672b702b54524b-build.zip"
+        },
+        "postsget": {
+          "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
+          "s3Key": "amplify-builds/postsget-6c6541416e2f5a713272-build.zip"
         }
       },
       "api": {
         "apic4d3be1d": {},
-        "post": {}
+        "post": {},
+        "postsget": {}
       },
       "auth": {
         "nbustudiod032f512": {}

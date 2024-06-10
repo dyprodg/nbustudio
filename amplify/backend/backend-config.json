@@ -27,6 +27,20 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    },
+    "postsget": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "postsget"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
@@ -64,6 +78,22 @@
       "service": "Lambda"
     },
     "postcreate": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "projects"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "postsget": {
       "build": true,
       "dependsOn": [
         {
@@ -117,6 +147,22 @@
         {
           "category": "function",
           "resourceName": "postcreate"
+        }
+      ]
+    },
+    "AMPLIFY_function_postsget_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postsget"
+        }
+      ]
+    },
+    "AMPLIFY_function_postsget_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postsget"
         }
       ]
     },
