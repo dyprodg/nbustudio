@@ -1,5 +1,6 @@
 // app/projekte/page.tsx
-import AWS from 'aws-sdk';
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
 interface Project {
     postId: string;
@@ -13,16 +14,19 @@ interface Project {
 }
 
 async function fetchProjects(): Promise<Project[]> {
-    const dynamoDb = new AWS.DynamoDB.DocumentClient({
+    const client = new DynamoDBClient({
         region: 'eu-central-1'
     });
+
+    const dynamoDb = DynamoDBDocumentClient.from(client);
 
     const params = {
         TableName: 'projects-dev',
     };
 
     try {
-        const result = await dynamoDb.scan(params).promise();
+        const command = new ScanCommand(params);
+        const result = await dynamoDb.send(command);
         return result.Items as Project[];
     } catch (error) {
         console.error('DynamoDB error: ', error);
