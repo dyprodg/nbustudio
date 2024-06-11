@@ -1,7 +1,3 @@
-// app/projekte/page.tsx
-
-import React from 'react';
-
 async function fetchProjects() {
     const response = await fetch('https://qb8lpr0b19.execute-api.eu-central-1.amazonaws.com/dev/get');
     if (!response.ok) {
