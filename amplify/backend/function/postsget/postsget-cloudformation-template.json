@@ -27,6 +27,12 @@
     "storageprojectsStreamArn": {
       "Type": "String",
       "Default": "storageprojectsStreamArn"
+    },
+    "region": {
+      "Type": "String"
+    },
+    "tablename": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -80,7 +86,7 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "AWS::Region"
+              "Ref": "region"
             },
             "STORAGE_PROJECTS_NAME": {
               "Ref": "storageprojectsName"
@@ -90,6 +96,9 @@
             },
             "STORAGE_PROJECTS_STREAMARN": {
               "Ref": "storageprojectsStreamArn"
+            },
+            "TABLENAME": {
+              "Ref": "tablename"
             }
           }
         },

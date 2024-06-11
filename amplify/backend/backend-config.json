@@ -158,7 +158,23 @@
         }
       ]
     },
+    "AMPLIFY_function_postsget_region": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postsget"
+        }
+      ]
+    },
     "AMPLIFY_function_postsget_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postsget"
+        }
+      ]
+    },
+    "AMPLIFY_function_postsget_tablename": {
       "usedBy": [
         {
           "category": "function",
