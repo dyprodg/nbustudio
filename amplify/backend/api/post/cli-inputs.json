@@ -10,6 +10,16 @@
           "create"
         ]
       }
+    },
+    "/delete": {
+      "name": "/delete",
+      "lambdaFunction": "postdelete",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "delete"
+        ]
+      }
     }
   }
 }

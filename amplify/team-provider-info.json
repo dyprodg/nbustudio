@@ -33,6 +33,12 @@
           "s3Key": "amplify-builds/postsget-364959544343646e3069-build.zip",
           "region": "eu-central-1",
           "tablename": "projects-dev"
+        },
+        "postdelete": {
+          "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
+          "s3Key": "amplify-builds/postdelete-73536a4c4d4b51587a75-build.zip",
+          "tablename": "projects-dev",
+          "region": "eu-central-1"
         }
       },
       "api": {

@@ -65,10 +65,40 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
 
             console.log('POST call succeeded');
             console.log(response);
+            fetchProjects();
         } catch (e) {
             console.log('POST call failed: ', JSON.parse((e as any).response.body));
         }
     };
+
+    const handleDelete = async (id: string) => {
+        const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
+        try {
+            const restOperation = post({
+                apiName: 'post',
+                path: '/delete',
+                options: {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`, 
+                    },
+                    body: {
+                        "postId": id
+                    }
+                }
+            })
+
+            const { body } = await restOperation.response;
+            const response = await body.json();
+
+            console.log('POST call succeeded');
+            console.log(response);
+            fetchProjects();
+        } catch (error) {
+            console.log('DELETE call failed: ', JSON.parse((error as any).response.body));
+        }
+    };
+
+
 
     return (
         <div className='flex mt-20 flex-col w-full min-h-screen '>
@@ -106,6 +136,12 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
             <div className='w-full h-auto flex flex-col items-center space-y-2'>
             {projects.map((project: any, index: number) => (
                     <div key={index} className="p-4 border rounded-lg shadow-md">
+                        <div className='w-full flex justify-end'>
+                            <button 
+                                className='border-2 p-2 border-black dark:border-custom-orange hover:cursor-pointer active:scale-105 hover:scale-105'
+                                onClick={() => handleDelete(project.postId.S)}
+                            >Delete</button>
+                        </div>
                         <h2 className="text-xl font-bold">{project.title.S}</h2>
                         <p className="text-gray-700">{project.description.S}</p>
                         <a href={project.link.S} className="text-blue-500 underline">Mehr erfahren</a>

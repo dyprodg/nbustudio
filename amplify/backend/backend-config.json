@@ -23,6 +23,14 @@
           ],
           "category": "function",
           "resourceName": "postcreate"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "postdelete"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -93,6 +101,22 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "postdelete": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "projects"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "postsget": {
       "build": true,
       "dependsOn": [
@@ -147,6 +171,38 @@
         {
           "category": "function",
           "resourceName": "postcreate"
+        }
+      ]
+    },
+    "AMPLIFY_function_postdelete_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postdelete"
+        }
+      ]
+    },
+    "AMPLIFY_function_postdelete_region": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postdelete"
+        }
+      ]
+    },
+    "AMPLIFY_function_postdelete_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postdelete"
+        }
+      ]
+    },
+    "AMPLIFY_function_postdelete_tablename": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postdelete"
         }
       ]
     },
