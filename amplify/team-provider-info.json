@@ -26,7 +26,10 @@
         },
         "postcreate": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
-          "s3Key": "amplify-builds/postcreate-313363672b702b54524b-build.zip"
+          "s3Key": "amplify-builds/postcreate-686f5043794165356355-build.zip",
+          "cloudfrontUrl": "https://d2h4n766jut7m4.cloudfront.net",
+          "awsBucketName": "nbustudio-content76f6a-dev",
+          "region": "eu-central-1"
         },
         "postsget": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
@@ -50,7 +53,8 @@
         "nbustudiod032f512": {}
       },
       "storage": {
-        "projects": {}
+        "projects": {},
+        "nbustudiocontent": {}
       }
     }
   }

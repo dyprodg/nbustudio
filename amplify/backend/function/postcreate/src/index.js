@@ -13,6 +13,7 @@ const AWS = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
+
 exports.handler = async (event) => {
     console.log(`EVENT: ${JSON.stringify(event)}`);
 
@@ -20,7 +21,7 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body);
 
     // Notwendige Felder überprüfen
-    const requiredFields = ['type', 'title', 'description', 'url'];
+    const requiredFields = ['type', 'title', 'description', 'url', 'filename'];
     for (const field of requiredFields) {
         if (!body[field]) {
             return {

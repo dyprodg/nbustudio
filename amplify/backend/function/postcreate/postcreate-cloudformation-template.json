@@ -27,6 +27,15 @@
     "storageprojectsStreamArn": {
       "Type": "String",
       "Default": "storageprojectsStreamArn"
+    },
+    "cloudfrontUrl": {
+      "Type": "String"
+    },
+    "awsBucketName": {
+      "Type": "String"
+    },
+    "region": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -80,7 +89,7 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "AWS::Region"
+              "Ref": "region"
             },
             "STORAGE_PROJECTS_NAME": {
               "Ref": "storageprojectsName"
@@ -90,6 +99,12 @@
             },
             "STORAGE_PROJECTS_STREAMARN": {
               "Ref": "storageprojectsStreamArn"
+            },
+            "CLOUDFRONT_URL": {
+              "Ref": "cloudfrontUrl"
+            },
+            "AWS_BUCKET_NAME": {
+              "Ref": "awsBucketName"
             }
           }
         },

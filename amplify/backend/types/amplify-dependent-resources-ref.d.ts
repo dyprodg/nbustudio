@@ -58,6 +58,10 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "nbustudiocontent": {
+      "BucketName": "string",
+      "Region": "string"
+    },
     "projects": {
       "Arn": "string",
       "Name": "string",

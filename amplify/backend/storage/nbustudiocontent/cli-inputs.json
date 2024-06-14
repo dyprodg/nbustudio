@@ -1,0 +1,13 @@
+{
+  "resourceName": "nbustudiocontent",
+  "policyUUID": "d7d2491b",
+  "bucketName": "nbustudio-content",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {}
+}

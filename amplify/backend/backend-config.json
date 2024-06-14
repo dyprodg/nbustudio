@@ -158,7 +158,31 @@
         }
       ]
     },
+    "AMPLIFY_function_postcreate_awsBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postcreate"
+        }
+      ]
+    },
+    "AMPLIFY_function_postcreate_cloudfrontUrl": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postcreate"
+        }
+      ]
+    },
     "AMPLIFY_function_postcreate_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postcreate"
+        }
+      ]
+    },
+    "AMPLIFY_function_postcreate_region": {
       "usedBy": [
         {
           "category": "function",
@@ -256,6 +280,11 @@
     }
   },
   "storage": {
+    "nbustudiocontent": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
     "projects": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
