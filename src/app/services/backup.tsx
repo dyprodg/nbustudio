@@ -62,7 +62,7 @@ export default function Services() {
                 </div>
             </div>
 
-            <div className="w-full flex m-4 justify-center text-center space-x-2">
+            <div className="w-full flex m-4 justify-center text-center">
                 {services.map((service, index) => (
                     <div
                     key={index}
@@ -71,6 +71,7 @@ export default function Services() {
                         ? " hover:scale-110 m-[-2rem] z-50"
                         : " hover:scale-105 m-1"
                     }`}
+                    style={{ width: '300px' }}
                     >
                         {index === 4 && (
                             <div className="py-1 px-2 bg-black dark:bg-custom-orange text-custom-orange dark:text-black rounded-lg mt-[-2rem] uppercase">Complete</div>

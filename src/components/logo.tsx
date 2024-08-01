@@ -9,7 +9,7 @@ const Logo: React.FC<IconProps> = ({ size = 24, color = 'black' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 749.38 1"
+      viewBox="0 70 749.38 1"
       width={size}
       height={size}
       fill={color}

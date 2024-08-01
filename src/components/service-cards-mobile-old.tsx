@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion,useInView } from 'framer-motion';
 
-export default function ServiceCardMobile() {
+function ServiceCardMobileOld() {
 
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, amount: 0})
