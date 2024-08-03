@@ -117,12 +117,12 @@ export default function LandingPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className='h-[40rem] object-contain overflow-hidden justify-center items-center flex'>
+                className='h-[40rem] object-contain overflow-hidden justify-center items-center flex relative z-0'>
                 <Image src={'/studio.jpeg'} width={1920} height={1080} alt='Nbu Studio'/>
             </motion.div>
             <div className='header-container flex flex-col items-center w-full'>
-                <div className=" text-center">
-                    <FlybyText text='Nbu Studio' className='text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-7rem]' />
+                <div className="text-center">
+                    <FlybyText text='Nbu Studio' className='text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-7rem] relative z-20' />
                 </div>
                 <div className='flex w-full justify-between'>
                     <div className="header-section m-20 text-center">
