@@ -17,6 +17,7 @@ body {
   background-color: var(--background-color);
 }
 
+
 /* globals.css oder eine andere globale CSS-Datei */
 @layer utilities {
   .radial-gradient-light {

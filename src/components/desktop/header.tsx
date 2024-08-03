@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import './service.css';
 import FlybyText from '../flighbytext';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,10 +24,11 @@ export default function LandingPage() {
             opacity: 1,
             duration: 1,
             stagger: 0.5,
+            ease: 'power2.out',
             scrollTrigger: {
                 trigger: '.header-container',
-                start: '-30% center',
-                end: '-10% top',
+                start: 'top center',
+                end: '20% top',
                 scrub: true,
                 markers: false,
             },
