@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react";
 import ThemeToggle from "./ui/mode-toggle";
+import Logo from "./logo";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -15,18 +16,24 @@ export default function Navbar() {
         <motion.div 
             initial={{ y: -150 }}
             animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 3 }}
-            className="flex h-[50px] fixed text-lg md:text-2xl top-0 z-50 w-full uppercase justify-evenly items-center font-bold bg-custom-orange dark:bg-black ">
+            transition={{ duration: 1 }}
+            className="flex h-[70px] fixed text-lg md:text-2xl top-0 z-50 w-full uppercase justify-evenly items-center font-bold bg-custom-orange dark:bg-black ">
+                <div className="bg-custom-orange border-2 border-black justify-center items-center p-2 rounded-full ml-4 hidden md:flex">
+                    <Logo size={50} color="black" />
+                </div>
+            
             <motion.div className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${isActive('/') ? 'text-custom-orange dark:text-black bg-black dark:bg-custom-orange' : ''}`}>
                 <Link href="/">
                     <p>Home</p>
                 </Link>
             </motion.div>
+            {/* 
             <motion.div className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${isActive('/services') ? 'text-custom-orange dark:text-black bg-black dark:bg-custom-orange' : ''}`}>
                 <Link href="/services">
                     <p>Services</p>
                 </Link>
             </motion.div>
+            */}
             <motion.div className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${isActive('/projekte') ? 'text-custom-orange dark:text-black bg-black dark:bg-custom-orange' : ''}`}>
                 <Link href="/projekte">
                     <p>Projekte</p>
