@@ -1,15 +1,36 @@
+'use client';
 import Image from "next/image";
+import { useState, useEffect } from 'react';
+import { get } from 'aws-amplify/api';
+import { Amplify } from 'aws-amplify';
+import config from '@/amplifyconfiguration.json';
+Amplify.configure(config);
 
-async function fetchProjects() {
-    const response = await fetch('https://qb8lpr0b19.execute-api.eu-central-1.amazonaws.com/dev/get');
-    if (!response.ok) {
-        throw new Error('Failed to fetch projects');
-    }
-    return response.json();
+interface Project {
+    title: { S: string };
+    description: { S: string };
+    link: { S: string };
 }
 
-export default async function Projekte() {
-    const projects = await fetchProjects();
+export default function Projekte() {
+    const [projects, setProjects] = useState<Project[]>([]);
+    useEffect(() => {
+        async function fetchProjects() {
+            try {
+                const restOperation = get({
+                    apiName: 'postsget',
+                    path: '/get',
+                });
+                const response = await restOperation.response;
+                const data = await response.body.json();
+                setProjects(data as any);
+            } catch (error) {
+                console.log('GET call failed: ', JSON.parse((error as any).response.body));
+            }
+        }
+        fetchProjects();
+    }, []);
+    
 
     return (
         <div className="flex flex-col items-center mt-12 md:mt-20 h-screen">
