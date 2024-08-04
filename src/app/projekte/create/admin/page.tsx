@@ -24,6 +24,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
     const [file, setFile] = useState<File | null>(null);
     const [projects, setProjects] = useState<Project[]>([]);
     const [uploadProgress, setUploadProgress] = useState(0);
+    const maxCharLimit = 200; // set your max character limit here
 
     async function fetchProjects() {
         try {
@@ -179,8 +180,15 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     rows={6}
                     placeholder='Beschreibung'
                     value={postDesc}
-                    onChange={(e) => setPostDesc(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value.length <= maxCharLimit) {
+                            setPostDesc(e.target.value);
+                        }
+                    }}
                 />
+                <div className='text-gray-400 mt-2'>
+                    {`Characters: ${postDesc.length} / ${maxCharLimit}`}
+                </div>
                 <input
                     type='file'
                     onChange={handleFileChange}

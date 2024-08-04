@@ -5,6 +5,8 @@ import { Poppins } from "next/font/google";
 import CookieBanner from '@/components/cookie-banner';
 import { Amplify } from 'aws-amplify';
 import config from '@/amplifyconfiguration.json';
+import Footer from '@/components/footer';
+import SmoothScrolling from '@/utils/smoothscroll';
 Amplify.configure(config);
 
 export const metadata = {
@@ -23,8 +25,11 @@ export default function RootLayout({
     <html lang="de">
       <body className={poppins.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <SmoothScrolling>
           <Navbar />
           {children}
+          <Footer />
+          </SmoothScrolling>
           <CookieBanner />
         </ThemeProvider>
       </body>

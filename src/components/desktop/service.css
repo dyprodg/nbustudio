@@ -26,5 +26,5 @@
 }
 
 .service-description {
-    @apply text-xl md:text-xl lg:text-lg space-y-4;
+    @apply text-xl md:text-xl lg:text-base space-y-4;
 }

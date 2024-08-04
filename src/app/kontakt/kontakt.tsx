@@ -38,11 +38,12 @@ export default function Kontakt() {
     const isDisabled = !name || !email || !message || !agreed || loading;
 
     return (
-        <div className="w-full h-screen flex justify-center items-center text-white relative z-30">
+        <div className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30">
+            <h1 className="text-3xl text-center text-black dark:text-custom-orange m-4">Nehmen Sie jetzt mit mir Kontakt auf!</h1>
             {sendSuccess ? (
                 <CheckMark message={`Nachricht gesendet`} />
             ) : (
-                <div className="flex flex-col border border-black dark:border-custom-orange shadow-blue w-[370px] md:w-[600px] rounded-3xl p-4">
+                <div className="flex flex-col border-2 border-black dark:border-custom-orange shadow-blue w-[370px] md:w-[600px] rounded-3xl p-4">
                     {loading ? (
                         <div>
                             <LoadingSpinner />
@@ -67,7 +68,7 @@ export default function Kontakt() {
                             />
                             <textarea
                                 className="flex p-2 m-4 outline-white rounded-3xl resize-none bg-black dark:bg-custom-orange active:border-neutral-500 text-white dark:text-black placeholder:text-gray-400 dark:placeholder:text-gray-900 text-xl"
-                                placeholder="Your Message"
+                                placeholder="Deine Nachricht"
                                 rows={10}
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
@@ -91,7 +92,7 @@ export default function Kontakt() {
                                     disabled={isDisabled}
                                     className="text-xl hover:scale-105 bg-black dark:bg-custom-orange text-white dark:text-black rounded-full p-2 w-1/2"
                                 >
-                                    {loading ? <div>Loading...</div> : <div>Send</div>}
+                                    {loading ? <div>Lädt...</div> : <div>Senden</div>}
                                 </button>
                             </div>
                             {error && (

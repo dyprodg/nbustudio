@@ -31,7 +31,7 @@ export default function LandingPage() {
                 start: 'top center+=150',
                 end: 'center center',
                 scrub: true,
-                markers: true,
+                markers: false,
             },
         });
 
@@ -152,7 +152,7 @@ export default function LandingPage() {
                 </div>
                
                 <div className="services-wrapper w-full mt-[-2rem]">
-                <div className="services-container ml-0 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                <div className="services-container m-8 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
                     {services.map((service, index) => (
                         <div
                             className={`service m-2 lg:m-[-1rem] ${
