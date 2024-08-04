@@ -113,7 +113,7 @@ export default function LandingPage() {
     ];
 
     return (
-        <div className="w-full flex flex-col items-center">
+        <div className="w-[380px] md:w-full flex flex-col items-center">
             {/* Landing Header Section */}
             <motion.div 
                 initial={{ opacity: 0 }}
@@ -127,18 +127,18 @@ export default function LandingPage() {
                     <FlybyText text='Nbu Studio' className='text-5xl lg:text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-17rem] md:mt-[-8rem] lg:mt-[-12rem] relative z-20' />
                 </div>
                 <div className='flex flex-col md:flex-row w-full justify-between'>
-                    <div className="header-section mt-20 md:ml-auto lg:ml-20 text-center">
-                        <h2 className="header-title text-4xl font-bold">Professionelle</h2>
-                        <h2 className="header-title text-6xl font-bold uppercase">Aufnahmen</h2>
+                    <div className="header-section mt-20 ml-0 md:ml-auto lg:ml-20 text-center">
+                        <h2 className="header-title text-3xl md:text-4xl font-bold">Professionelle</h2>
+                        <h2 className="header-title text-5xl md:text-6xl font-bold uppercase">Aufnahmen</h2>
                     </div>
-                    <div className="header-section m-20 text-center">
-                        <h2 className="header-title text-4xl font-bold">Modernes</h2>
-                        <h2 className="header-title text-6xl font-bold uppercase">Equipment</h2>
+                    <div className="header-section m-0 mt-12  md:m-20 text-center">
+                        <h2 className="header-title text-3xl md:text-4xl font-bold">Modernes</h2>
+                        <h2 className="header-title text-5xl md:text-6xl font-bold uppercase">Equipment</h2>
                     </div>
                 </div>
-                <div className="header-section md:mt-[2rem] text-center w-full">
-                    <h2 className="header-title text-5xl md:text-7xl uppercase">Ihr Schweizer</h2>
-                    <p className="header-content text-7xl md:text-[8rem] lg:text-[10rem] font-bold uppercase">Tonstudio</p>
+                <div className="header-section mt-20 md:mt-[2rem] text-center w-full">
+                    <h2 className="header-title text-4xl md:text-7xl uppercase">Ihr Schweizer</h2>
+                    <p className="header-content text-6xl md:text-[8rem] lg:text-[10rem] font-bold uppercase">Tonstudio</p>
                 </div>
                 <div className='bg-custom-orange rounded-full p-20 mt-20 md:mt-10  header-section'>
                     <Cross size={400} color='black' />
@@ -147,7 +147,7 @@ export default function LandingPage() {
 
             {/* Services Section */}
             <div className="w-full flex flex-col">
-                <div className='w-full text-center text-5xl font-bold mt-[6rem]'>
+                <div className='w-full text-center text-3xl md:text-5xl font-bold mt-[6rem]'>
                     <h1>Unsere Leistungen</h1>
                 </div>
                
@@ -156,7 +156,7 @@ export default function LandingPage() {
                     {services.map((service, index) => (
                         <div
                             className={`service m-2 lg:m-[-1rem] ${
-                                index === 4 ? 'h-[50vh] lg:h-[75vh]' : 'h-[50vh] lg:h-[70vh]'
+                                index === 4 ? 'h-[70vh] lg:h-[75vh]' : 'h-[70vh] lg:h-[70vh]'
                             }`}
                             key={index}
                         >
@@ -179,7 +179,7 @@ export default function LandingPage() {
                 </div>
 
 
-                <div className='h-[60vh]'>
+                <div className='h-[50vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">

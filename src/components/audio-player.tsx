@@ -1,53 +1,89 @@
-import React, { useRef, useState } from 'react';
-import { FaPlay, FaPause, FaVolumeUp } from 'react-icons/fa';
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import WaveSurfer from "wavesurfer.js";
+import {
+  FaPlay,
+  FaPause,
+  FaVolumeUp,
+  FaStop,
+} from "react-icons/fa";
 
 interface AudioPlayerProps {
   src: string;
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const waveformRef = useRef<HTMLDivElement | null>(null);
+  const wavesurfer = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1); // Default volume set to max (1)
   const [showVolumeControl, setShowVolumeControl] = useState(false);
   const volumeTimeoutRef = useRef<number | undefined>(undefined);
 
-  const togglePlayPause = () => {
-    if (!audioRef.current) return;
+  useEffect(() => {
+    // Cleanup on component unmount
+    return () => {
+      if (wavesurfer.current) {
+        wavesurfer.current.destroy();
+        wavesurfer.current = null;
+      }
+    };
+  }, []);
 
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+  const createWaveSurferInstance = () => {
+    if (waveformRef.current && !wavesurfer.current) {
+      // Create a new WaveSurfer instance
+      wavesurfer.current = WaveSurfer.create({
+        container: waveformRef.current,
+        waveColor: "#525252",
+        progressColor: "#ff6c2c",
+        height: 80,
+        barWidth: 2,
+        barHeight: 1, // Bar Height relative to the waveHeight
+        barGap: 1,
+        normalize: true,
+      });
+
+      wavesurfer.current.load(src);
+
+      wavesurfer.current.on("ready", () => {
+        console.log("Waveform is ready");
+        if (isPlaying) {
+          wavesurfer.current?.play();
+        }
+      });
+
+      wavesurfer.current.on("finish", () => {
+        console.log("Song finished");
+        setIsPlaying(false);
+      });
     }
-    setIsPlaying(!isPlaying);
   };
 
-  const handleTimeUpdate = () => {
-    if (!audioRef.current) return;
-
-    setProgress(
-      (audioRef.current.currentTime / audioRef.current.duration) * 100
-    );
+  const togglePlayPause = () => {
+    if (!wavesurfer.current) {
+      createWaveSurferInstance();
+    } else {
+      wavesurfer.current.playPause();
+      setIsPlaying(!isPlaying);
+    }
   };
 
-  const handleProgressClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!audioRef.current) return;
-
-    const rect = (event.target as HTMLDivElement).getBoundingClientRect();
-    const clickPosition = event.clientX - rect.left;
-    const newTime = (clickPosition / rect.width) * audioRef.current.duration;
-    audioRef.current.currentTime = newTime;
+  const handleStop = () => {
+    if (wavesurfer.current) {
+      wavesurfer.current.stop();
+      setIsPlaying(false);
+    }
   };
 
   const handleVolumeClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!audioRef.current) return;
+    if (!wavesurfer.current) return;
 
     const rect = (event.target as HTMLDivElement).getBoundingClientRect();
-    const clickPosition = rect.bottom - event.clientY; 
+    const clickPosition = rect.bottom - event.clientY;
     const newVolume = clickPosition / rect.height;
-    audioRef.current.volume = newVolume;
+    wavesurfer.current.setVolume(newVolume);
     setVolume(newVolume);
   };
 
@@ -64,42 +100,41 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   };
 
   return (
-    <div className="relative flex items-center gap-4 p-4 bg-black dark:bg-custom-orange rounded-lg shadow-md">
-      <audio ref={audioRef} src={src} onTimeUpdate={handleTimeUpdate} />
-      <button
-        onClick={togglePlayPause}
-        className="px-4 py-2 text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200"
-      >
-        {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
-      </button>
-      <div
-        className="relative w-full h-2 bg-gray-300 rounded cursor-pointer"
-        onClick={handleProgressClick}
-      >
-        <div
-          className="absolute top-0 left-0 h-full bg-custom-orange dark:bg-black rounded"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-      <button
-        onClick={toggleVolumeControl}
-        className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-linear duration-200 p-2"
-      >
-        <FaVolumeUp size={16} />
-      </button>
-      {showVolumeControl && (
-        <div className="absolute flex items-center justify-center p-2 bg-black dark:bg-custom-orange rounded-lg shadow-md right-[25px] bottom-16 h-32">
-          <div
-            className="relative w-2 h-full bg-gray-300 rounded cursor-pointer"
-            onClick={handleVolumeClick}
-          >
+    <div className="relative flex flex-col items-center gap-4 p-4 bg-black dark:bg-custom-orange rounded-lg shadow-md">
+      <div ref={waveformRef} className="w-full h-20 mb-4" />
+      <div className="flex items-center gap-4">
+        <button
+          onClick={togglePlayPause}
+          className="px-4 py-2 text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200"
+        >
+          {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
+        </button>
+        <button
+          onClick={handleStop}
+          className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200 p-2"
+        >
+          <FaStop size={16} />
+        </button>
+        <button
+          onClick={toggleVolumeControl}
+          className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-linear duration-200 p-2"
+        >
+          <FaVolumeUp size={16} />
+        </button>
+        {showVolumeControl && (
+          <div className="absolute flex items-center justify-center p-2 bg-black dark:bg-custom-orange rounded-lg shadow-md right-[-10px] bottom-12 h-32">
             <div
-              className="absolute bottom-0 left-0 w-full bg-custom-orange dark:bg-black rounded"
-              style={{ height: `${volume * 100}%` }}
-            />
+              className="relative w-2 h-full bg-gray-300 rounded cursor-pointer"
+              onClick={handleVolumeClick}
+            >
+              <div
+                className="absolute bottom-0 left-0 w-full bg-custom-orange dark:bg-black rounded"
+                style={{ height: `${volume * 100}%` }}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

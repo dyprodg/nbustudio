@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
 import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
@@ -20,12 +20,14 @@ interface Project {
 
 function Page({ signOut, user }: WithAuthenticatorProps) {
     const [postTitle, setPostTitle] = useState('');
+    const [postLink, setPostLink] = useState('');
     const [postDesc, setPostDesc] = useState('');
     const [file, setFile] = useState<File | null>(null);
     const [projects, setProjects] = useState<Project[]>([]);
     const [uploadProgress, setUploadProgress] = useState(0);
-    const maxCharLimit = 200; // set your max character limit here
+    const maxCharLimit = 200; // Maximum character limit for description
 
+    // Fetch projects from the server
     async function fetchProjects() {
         try {
             const restOperation = get({
@@ -34,7 +36,8 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
             });
             const response = await restOperation.response;
             const data = await response.body.json();
-            setProjects(data as any);
+            const sortedData = Array.isArray(data) ? data.sort((a: any, b: any) => b.createdAt - a.createdAt) : [];
+            setProjects(sortedData as any);
         } catch (error) {
             console.log('GET call failed: ', JSON.parse((error as any).response.body));
         }
@@ -104,6 +107,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                         description: postDesc,
                         url: `https://d2h4n766jut7m4.cloudfront.net/uploads/${filename}`,
                         filename: filename,
+                        ...(postLink && { link: postLink }),
                     },
                 },
             });
@@ -157,7 +161,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
     };
 
     return (
-        <div className='flex mt-20 flex-col w-full min-h-screen '>
+        <div className="flex flex-col items-center mt-20 min-h-screen">
             <div className='text-2xl flex justify-center items-center'>
                 <h1>Hello {user?.username}</h1>
                 <button
@@ -167,7 +171,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     Sign out
                 </button>
             </div>
-
+            
             <div className='flex flex-col m-10 max-w-[800px] text-white'>
                 <input
                     className='bg-black text-white p-4 border border-white placeholder:text-gray-300 text-xl'
@@ -190,6 +194,13 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     {`Characters: ${postDesc.length} / ${maxCharLimit}`}
                 </div>
                 <input
+                    className='bg-black text-white p-4 border border-white placeholder:text-gray-300 text-xl'
+                    placeholder='Link wenn vorhanden'
+                    value={postLink}
+                    onChange={(e) => setPostLink(e.target.value)}
+                />
+                
+                <input
                     type='file'
                     onChange={handleFileChange}
                     className='bg-black text-white border border-white p-4 mt-4'
@@ -211,32 +222,45 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     </div>
                 )}
             </div>
-            <div className='w-full h-auto flex flex-col items-center space-y-2'>
+
+            <div className='w-full h-auto flex flex-col items-center space-y-2 mt-8'>
                 {projects.map((project: any, index: number) => (
-                    <div key={index} className="p-4 border rounded-lg shadow-md">
-                        <div className='w-full flex justify-end'>
+                    <div key={index} className="bg-gradient-to-br from-custom-orange dark:from-black from-0% via-custom-orange dark:via-black via-60% to-black dark:to-custom-orange to-80 md:to-70%
+                        p-4 border-2 shadow-xl border-black dark:border-custom-orange rounded-lg w-[380px] md:w-[700px] lg:w-[1000px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left justify-between">
+                        
+                        
                             <button
                                 className='border-2 p-2 border-black dark:border-custom-orange hover:cursor-pointer active:scale-105 hover:scale-105'
                                 onClick={() => handleDelete(project.postId.S, `uploads/${project.filename.S}`)}
                             >Delete</button>
+                        
+
+                        <div className='flex flex-col h-full justify-evenly space-y-4 w-full md:w-[30%] m-2'>
+                            <h2 className="text-3xl font-bold uppercase">{project.title.S}</h2>
+                            <p className="text-black dark:text-custom-orange">{project.description.S}</p>
+                            {project.link && <a className="text-xs underline" href={'www.test.de'} >{project.link.S}</a>}
                         </div>
-                        <h2 className="text-xl font-bold">{project.title.S}</h2>
-                        <p className="text-gray-700">{project.description.S}</p>
-                        <p>{project.type.S}</p>
+                        
                         { project.type.S === 'image' ? 
-                        <div>
-                            <Image src={project.url.S} alt={project.title.S} width={200} height={200} />
+                        <div className="w-full bg-black border-2 border-black dark:border-custom-orange rounded-2xl overflow-hidden">
+                            <Image src={project.url.S} alt={project.title.S} width={1920} height={1080} />
                         </div>
                         : null}
-                        { project.type.S === 'video' ? <div>
-                            <video width="320" height="240" controls>
+                        {project.type.S === 'video' ? (
+                        <div className="bg-black border-2 border-black dark:border-custom-orange rounded-2xl ">
+                            <video className="w-[280px] md:w-[380px] lg:w-[600px] rounded-xl" controls>
                                 <source src={project.url.S} type="video/mp4" />
                             </video>
-                        </div> : null}
+                        </div>
+                        ) : null}
+
                         { project.type.S === 'audio' ? <div>
-                            <audio controls>
-                                <source src={project.url.S} type="audio/mpeg" />
-                            </audio>
+                            <div className="p-5 w-[280px] md:w-[380px] lg:w-[600px]">
+                                <audio controls>
+                                    <source src={project.url.S} type="audio/mpeg" />
+                                </audio>
+                            </div>
+                            
                         </div> : null}
                     </div>
                 ))}

@@ -26,7 +26,7 @@
         },
         "postcreate": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
-          "s3Key": "amplify-builds/postcreate-686f5043794165356355-build.zip",
+          "s3Key": "amplify-builds/postcreate-6e6e705766776e694b66-build.zip",
           "cloudfrontUrl": "https://d2h4n766jut7m4.cloudfront.net",
           "awsBucketName": "nbustudio-content76f6a-dev",
           "region": "eu-central-1"

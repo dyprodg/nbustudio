@@ -14,7 +14,7 @@ export default function Navbar() {
 
   // Helper function to render either scroll link or regular link
   const renderLink = (to: string, name: string) => {
-    if (pathname === '/') {
+    if (pathname === '/#' || pathname === '/') {
       // Use ScrollLink for smooth scrolling when on the homepage
       return (
         <ScrollLink
@@ -45,7 +45,7 @@ export default function Navbar() {
     >
       <motion.div
         className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          isActive("/" || "/#home") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
         }`}
       >
         {renderLink("home", "Home")}
@@ -53,7 +53,7 @@ export default function Navbar() {
 
       <motion.div
         className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/projekte") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          isActive("/#projekte") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
         }`}
       >
         {renderLink("projekte", "Projekte")}
@@ -61,7 +61,7 @@ export default function Navbar() {
 
       <motion.div
         className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/kontakt") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          isActive("/#kontakt") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
         }`}
       >
         <div

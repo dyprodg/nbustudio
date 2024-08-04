@@ -41,6 +41,7 @@ exports.handler = async (event) => {
         TableName: tableName,
         Item: {
             postId: postId,
+            createdAt: Date.now(),
             ...body
         }
     };
