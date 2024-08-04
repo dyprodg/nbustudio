@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { get } from 'aws-amplify/api';
 import { Amplify } from 'aws-amplify';
 import config from '@/amplifyconfiguration.json';
+import AudioPlayer from "@/components/audio-player";
 Amplify.configure(config);
 
 interface Project {
@@ -41,26 +42,31 @@ export default function Projekte() {
             
             <div className='w-full h-auto flex flex-col items-center space-y-2'>
                 {projects.map((project: any, index: number) => (
-                    <div key={index} className="p-4 border rounded-lg shadow-md">
-                        <div className='w-full flex justify-end'>
+                    <div key={index} className="p-4 border-2 shadow-xl border-black dark:border-custom-orange rounded-lg w-[380px] md:w-[600px] lg:w-[800px] flex items-end">
+                        <div className='w-full flex flex-col h-full justify-between space-y-4'>
+                            <h2 className="text-3xl font-bold">{project.title.S}</h2>
+                            <p className="text-black dark:text-custom-orange">{project.description.S}</p>
                         </div>
-                        <h2 className="text-xl font-bold">{project.title.S}</h2>
-                        <p className="text-gray-700">{project.description.S}</p>
-                        <p>{project.type.S}</p>
+                        
                         { project.type.S === 'image' ? 
-                        <div>
-                            <Image src={project.url.S} alt={project.title.S} width={200} height={200} />
+                        <div className="w-full bg-black border-2 border-black dark:border-custom-orange rounded-2xl overflow-hidden">
+                            <Image src={project.url.S} alt={project.title.S} width={1920} height={1080} />
                         </div>
                         : null}
-                        { project.type.S === 'video' ? <div>
-                            <video width="320" height="240" controls>
+                        { project.type.S === 'video' ? <div className="w-full bg-black border-2 border-black dark:border-custom-orange  p-2 rounded-2xl">
+                            <video width="1920" height="1080" controls>
                                 <source src={project.url.S} type="video/mp4" />
                             </video>
                         </div> : null}
                         { project.type.S === 'audio' ? <div>
+                            {/*
                             <audio controls>
                                 <source src={project.url.S} type="audio/mpeg" />
-                            </audio>
+                            </audio>*/}
+                            <div className="p-5 w-[380px]">
+                                <AudioPlayer src={project.url.S} />
+                            </div>
+                            
                         </div> : null}
                     </div>
                 ))}

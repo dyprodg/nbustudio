@@ -8,6 +8,7 @@ import Link from 'next/link';
 import './service.css';
 import FlybyText from '../flighbytext';
 import { motion } from 'framer-motion';
+import Cross from '../cross';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,7 @@ export default function LandingPage() {
         // Animation for header sections
         const headerSections = gsap.utils.toArray('.header-section');
 
-        gsap.set(headerSections, { y: 200, x: -200, opacity: 0 });
+        gsap.set(headerSections, { y: 800, x: -800, opacity: 0 });
 
         gsap.to(headerSections, {
             x: 0,
@@ -27,10 +28,10 @@ export default function LandingPage() {
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: '.header-container',
-                start: 'top center',
-                end: '20% top',
+                start: 'top center+=150',
+                end: 'center center',
                 scrub: true,
-                markers: false,
+                markers: true,
             },
         });
 
@@ -47,7 +48,7 @@ export default function LandingPage() {
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: '.services-wrapper',
-                start: '50% center',
+                start: 'top-=50 top',
                 end: '+=500',
                 scrub: true,
                 pin: true,
@@ -123,10 +124,10 @@ export default function LandingPage() {
             </motion.div>
             <div className='header-container flex flex-col items-center w-full'>
                 <div className="text-center">
-                    <FlybyText text='Nbu Studio' className='text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-7rem] relative z-20' />
+                    <FlybyText text='Nbu Studio' className='text-5xl lg:text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-17rem] md:mt-[-8rem] lg:mt-[-12rem] relative z-20' />
                 </div>
-                <div className='flex w-full justify-between'>
-                    <div className="header-section m-20 text-center">
+                <div className='flex flex-col md:flex-row w-full justify-between'>
+                    <div className="header-section mt-20 md:ml-auto lg:ml-20 text-center">
                         <h2 className="header-title text-4xl font-bold">Professionelle</h2>
                         <h2 className="header-title text-6xl font-bold uppercase">Aufnahmen</h2>
                     </div>
@@ -135,9 +136,12 @@ export default function LandingPage() {
                         <h2 className="header-title text-6xl font-bold uppercase">Equipment</h2>
                     </div>
                 </div>
-                <div className="header-section mt-[2rem] text-center w-full">
-                    <h2 className="header-title text-7xl uppercase">Ihr Schweizer</h2>
-                    <p className="header-content text-[10rem] font-bold uppercase">Tonstudio</p>
+                <div className="header-section md:mt-[2rem] text-center w-full">
+                    <h2 className="header-title text-5xl md:text-7xl uppercase">Ihr Schweizer</h2>
+                    <p className="header-content text-7xl md:text-[8rem] lg:text-[10rem] font-bold uppercase">Tonstudio</p>
+                </div>
+                <div className='bg-custom-orange rounded-full p-20 mt-20 md:mt-10  header-section'>
+                    <Cross size={400} color='black' />
                 </div>
             </div>
 
@@ -148,29 +152,34 @@ export default function LandingPage() {
                 </div>
                
                 <div className="services-wrapper w-full mt-[-2rem]">
-                    <div className="services-container ml-[20px]">
-                        {services.map((service, index) => (
-                            <div className={`service ${index === 4 ? 'h-[60vh] lg:h-[75vh] m-2' : 'h-[50vh] lg:h-[70vh]'}`} key={index}>
-                                {index === 4 && (
-                                    <div className='service-plate'>complete</div>
-                                )}
-                                <div className={`h-[100%] ${index === 4 ? 'mt-[4.5rem]' : 'mt-[3rem]'}`}>
-                                    <div className='h-[50%]'>
-                                        <h2 className='service-title'>{service.title}</h2>
-                                        <p className="service-price">{service.price}</p>
-                                    </div>
-                                    <div>
-                                        <ul className="service-description">
-                                            <li>{service.description[0]}</li>
-                                            <li>{service.description[1]}</li>
-                                        </ul>
-                                    </div>
+                <div className="services-container ml-0 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                    {services.map((service, index) => (
+                        <div
+                            className={`service m-2 lg:m-[-1rem] ${
+                                index === 4 ? 'h-[50vh] lg:h-[75vh]' : 'h-[50vh] lg:h-[70vh]'
+                            }`}
+                            key={index}
+                        >
+                            {index === 4 && <div className="service-plate">complete</div>}
+                            <div className={`h-[100%] ${index === 4 ? 'mt-[4.5rem]' : 'mt-[3rem]'}`}>
+                                <div className="h-[50%]">
+                                    <h2 className="service-title">{service.title}</h2>
+                                    <p className="service-price">{service.price}</p>
+                                </div>
+                                <div>
+                                    <ul className="service-description">
+                                        <li>{service.description[0]}</li>
+                                        <li>{service.description[1]}</li>
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
                         ))}
                     </div>
                 </div>
-                <div className='h-[50vh]'>
+
+
+                <div className='h-[60vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">

@@ -18,9 +18,6 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 1 }}
             className="flex h-[70px] fixed text-lg md:text-2xl top-0 z-50 w-full uppercase justify-evenly items-center font-bold bg-custom-orange dark:bg-black ">
-                <div className="bg-custom-orange border-2 border-black justify-center items-center p-2 rounded-full ml-4 hidden md:flex">
-                    <Logo size={50} color="black" />
-                </div>
             
             <motion.div className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${isActive('/') ? 'text-custom-orange dark:text-black bg-black dark:bg-custom-orange' : ''}`}>
                 <Link href="/">

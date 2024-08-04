@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import LandingHeader from "@/components/desktop/header";
+import Projekte from "./projekte/page";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <div className="h-[110vh]">
       </div>
 */}
+      <Projekte />
       <Footer />
     </div>
   );
