@@ -71,7 +71,10 @@ export default function Projekte() {
 
                             { project.type.S === 'audio' ? <div>
                                 <div className="p-5 w-[280px] md:w-[380px] lg:w-[600px]">
-                                    <AudioPlayer src={project.url.S} />
+                                    <AudioPlayer 
+                                        src={project.url.S}
+                                        image={project.imageUrl ? project.imageUrl.S : undefined}
+                                    />
                                 </div>
                                 
                             </div> : null}

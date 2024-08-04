@@ -8,12 +8,14 @@ import {
   FaVolumeUp,
   FaStop,
 } from "react-icons/fa";
+import Image from "next/image";
 
 interface AudioPlayerProps {
   src: string;
+  image?: string;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
   const waveformRef = useRef<HTMLDivElement | null>(null);
   const wavesurfer = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -100,9 +102,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center gap-4 p-4 bg-black dark:bg-custom-orange rounded-lg shadow-md">
-      <div ref={waveformRef} className="w-full h-20 mb-4" />
-      <div className="flex items-center gap-4">
+    <div className="relative flex flex-col items-center gap-4 bg-black dark:bg-custom-orange rounded-lg shadow-md overflow-hidden">
+      {image && (
+        <div className="absolute object-fit z-0">
+          <Image src={image} width={1920} height={1080} alt="Audio-Background-Image"/>
+        </div>
+        )}
+      <div ref={waveformRef} className="w-full h-20 m-4 " />
+      <div className="flex items-center gap-4 z-10">
         <button
           onClick={togglePlayPause}
           className="px-4 py-2 text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200"
@@ -111,7 +118,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
         </button>
         <button
           onClick={handleStop}
-          className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200 p-2"
+          className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200 p-2 m-4"
         >
           <FaStop size={16} />
         </button>
@@ -122,7 +129,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
           <FaVolumeUp size={16} />
         </button>
         {showVolumeControl && (
-          <div className="absolute flex items-center justify-center p-2 bg-black dark:bg-custom-orange rounded-lg shadow-md right-[-10px] bottom-12 h-32">
+          <div className="absolute flex items-center justify-center p-2 bg-black dark:bg-custom-orange rounded-lg shadow-md right-[10px] bottom-8 h-32">
             <div
               className="relative w-2 h-full bg-gray-300 rounded cursor-pointer"
               onClick={handleVolumeClick}

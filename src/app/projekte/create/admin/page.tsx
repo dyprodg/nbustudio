@@ -23,6 +23,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
     const [postLink, setPostLink] = useState('');
     const [postDesc, setPostDesc] = useState('');
     const [file, setFile] = useState<File | null>(null);
+    const [imageFile, setImageFile] = useState<File | null>(null); // Zweite Datei für das Bild
     const [projects, setProjects] = useState<Project[]>([]);
     const [uploadProgress, setUploadProgress] = useState(0);
     const maxCharLimit = 200; // Maximum character limit for description
@@ -53,20 +54,27 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
         }
     };
 
+    const handleImageFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            setImageFile(event.target.files[0]);
+        }
+    };
+
     const handlePost = async () => {
         if (!file) {
             console.error('No file selected');
             return;
         }
 
-        const genereateRandomName = () => {
+        const generateRandomName = () => {
             return crypto.randomBytes(16).toString('hex');
         };
+
         const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
         const filetype = file.type;
-        const filename = `${genereateRandomName()}.${filetype.split('/')[1]}`;
+        const filename = `${generateRandomName()}.${filetype.split('/')[1]}`;
 
-        if(!authToken) {
+        if (!authToken) {
             console.error('No auth token');
             return;
         }
@@ -91,7 +99,32 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                 console.log("Error uploading file: ", error)
             }
         }
-        monitorUpload();
+        await monitorUpload();
+
+        // Upload the second image file if the main file is an audio
+        let imageFilename = null;
+        if (filetype.split('/')[0] === 'audio' && imageFile) {
+            const imageFiletype = imageFile.type;
+            imageFilename = `${generateRandomName()}.${imageFiletype.split('/')[1]}`;
+            
+            try {
+                const result = await uploadData({
+                    path: `uploads/${imageFilename}`,
+                    data: imageFile,
+                    options: {
+                        onProgress: ({ transferredBytes, totalBytes }) => {
+                            if (totalBytes) {
+                                const progress = Math.round((transferredBytes / totalBytes) * 100);
+                                console.log(`Image upload progress ${progress}%`);
+                            }
+                        }
+                    }
+                }).result;
+                console.log("Image path from Response: ", result.path);
+            } catch (error) {
+                console.log("Error uploading image file: ", error);
+            }
+        }
 
         try {
             const restOperation = post({
@@ -107,6 +140,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                         description: postDesc,
                         url: `https://d2h4n766jut7m4.cloudfront.net/uploads/${filename}`,
                         filename: filename,
+                        ...(imageFilename && { imageUrl: `https://d2h4n766jut7m4.cloudfront.net/uploads/${imageFilename}` }),
                         ...(postLink && { link: postLink }),
                     },
                 },
@@ -116,6 +150,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
             const response = await body.json();
             console.log('POST call successfull', response);
             setFile(null);
+            setImageFile(null);
             setPostTitle('');
             setPostDesc('');
             setUploadProgress(0);
@@ -205,6 +240,14 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     onChange={handleFileChange}
                     className='bg-black text-white border border-white p-4 mt-4'
                 />
+                {/* Display second file input only if the main file is audio */}
+                {file && file.type.split('/')[0] === 'audio' && (
+                    <input
+                        type='file'
+                        onChange={handleImageFileChange}
+                        className='bg-black text-white border border-white p-4 mt-4'
+                    />
+                )}
                 <button
                     onClick={handlePost}
                     className='text-2xl border hover:scale-105 p-4 hover:cursor-pointer active:scale-95 transition ease-in-out duration-100 bg-black mt-4'
@@ -260,7 +303,12 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                                     <source src={project.url.S} type="audio/mpeg" />
                                 </audio>
                             </div>
-                            
+                            {/* Display second image if it was uploaded */}
+                            {project.imageUrl && (
+                                <div className="w-full bg-black border-2 border-black dark:border-custom-orange rounded-2xl overflow-hidden mt-4">
+                                    <Image src={project.imageUrl.S} alt={`${project.title.S} - Image`} width={1920} height={1080} />
+                                </div>
+                            )}
                         </div> : null}
                     </div>
                 ))}
