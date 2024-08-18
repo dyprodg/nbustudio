@@ -112,8 +112,11 @@ export default function LandingPage() {
     return (
         <div className="w-[380px] md:w-full flex flex-col items-center">
             {/* Landing Header Section */}
-            <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-video.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full h-auto hidden md:block'/>
-            <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-vertical.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-auto flex md:hidden'/>
+            <div className='w-full bg-custom-orange dark:bg-black z-80 relative'>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-video.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-auto hidden md:block'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-vertical.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-auto flex md:hidden'/>
+            </div>
+            
             <div className='header-container flex flex-col items-center w-full'>
                 <div className="text-center hidden">
                     <FlybyText text='Nbu Studio' className='text-5xl lg:text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-17rem] md:mt-[-8rem] lg:mt-[-12rem] relative z-20' />
@@ -140,7 +143,7 @@ export default function LandingPage() {
                 <div className='w-full text-center text-3xl md:text-5xl font-bold'>
                     <h1>Unsere Leistungen</h1>
                 </div>
-                <div className="services-container m-8 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                <div className="services-container m-8 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 relative z-50">
                     {services.map((service, index) => (
                         <div
                             className={`service m-2 lg:m-[-1rem] ${
