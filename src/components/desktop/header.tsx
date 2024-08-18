@@ -3,12 +3,9 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import Image from 'next/image';
 import Link from 'next/link';
 import './service.css';
 import FlybyText from '../flighbytext';
-import { motion } from 'framer-motion';
-import Cross from '../cross';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +49,7 @@ export default function LandingPage() {
                 end: '+=500',
                 scrub: true,
                 pin: true,
-                markers: true,
+                markers: false,
             },
         });
 
