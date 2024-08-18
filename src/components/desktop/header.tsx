@@ -115,19 +115,14 @@ export default function LandingPage() {
     return (
         <div className="w-[380px] md:w-full flex flex-col items-center">
             {/* Landing Header Section */}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className='h-[40rem] object-contain overflow-hidden justify-center items-center flex relative z-0'>
-                <Image src={'/studio.jpeg'} width={1920} height={1080} alt='Nbu Studio'/>
-            </motion.div>
+            <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-video.mp4' autoPlay loop muted className='mt-12 object-cover w-full h-auto hidden md:block'/>
+            <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-vertical.mp4' autoPlay loop muted className='mt-16 object-cover w-full h-auto flex md:hidden'/>
             <div className='header-container flex flex-col items-center w-full'>
-                <div className="text-center">
+                <div className="text-center hidden">
                     <FlybyText text='Nbu Studio' className='text-5xl lg:text-[8rem] font-bold uppercase bg-custom-orange dark:bg-black p-6 rounded-full mt-[-17rem] md:mt-[-8rem] lg:mt-[-12rem] relative z-20' />
                 </div>
                 <div className='flex flex-col md:flex-row w-full justify-between'>
-                    <div className="header-section mt-20 ml-0 md:ml-auto lg:ml-20 text-center">
+                    <div className="header-section mt-4 md:mt-20 ml-0 md:ml-auto lg:ml-20 text-center">
                         <h2 className="header-title text-3xl md:text-4xl font-bold">Professionelle</h2>
                         <h2 className="header-title text-5xl md:text-6xl font-bold uppercase">Aufnahmen</h2>
                     </div>
@@ -140,14 +135,11 @@ export default function LandingPage() {
                     <h2 className="header-title text-4xl md:text-7xl uppercase">Ihr Schweizer</h2>
                     <p className="header-content text-6xl md:text-[8rem] lg:text-[10rem] font-bold uppercase">Tonstudio</p>
                 </div>
-                <div className='bg-custom-orange rounded-full p-20 mt-20 md:mt-10  header-section'>
-                    <Cross size={400} color='black' />
-                </div>
             </div>
 
             {/* Services Section */}
             <div className="w-full flex flex-col">
-                <div className='w-full text-center text-3xl md:text-5xl font-bold mt-[6rem]'>
+                <div className='w-full text-center text-3xl md:text-5xl font-bold mt-20 md:mt-[15rem]'>
                     <h1>Unsere Leistungen</h1>
                 </div>
                
@@ -179,7 +171,7 @@ export default function LandingPage() {
                 </div>
 
 
-                <div className='h-[50vh]'>
+                <div className='h-[60vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">
