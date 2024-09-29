@@ -46,7 +46,7 @@ export default function LandingPage() {
             scrollTrigger: {
                 trigger: '.services-wrapper',
                 start: 'top-=100 top',
-                end: '+=500',
+                end: '+=1000',
                 scrub: true,
                 pin: true,
                 markers: false,
@@ -124,11 +124,11 @@ export default function LandingPage() {
                 <div className='flex flex-col md:flex-row w-full justify-between'>
                     <div className="header-section mt-4 md:mt-20 ml-0 md:ml-auto lg:ml-20 text-center">
                         <h2 className="header-title text-3xl md:text-4xl font-bold">Professionelle</h2>
-                        <h2 className="header-title text-5xl md:text-6xl font-bold uppercase">Aufnahmen</h2>
+                        <h2 className="header-title text-5xl md:text-5xl lg:text-6xl font-bold uppercase">Aufnahmen</h2>
                     </div>
                     <div className="header-section m-0 mt-12  md:m-20 text-center">
                         <h2 className="header-title text-3xl md:text-4xl font-bold">Modernes</h2>
-                        <h2 className="header-title text-5xl md:text-6xl font-bold uppercase">Equipment</h2>
+                        <h2 className="header-title text-5xl md:text-5xl lg:text-6xl font-bold uppercase">Equipment</h2>
                     </div>
                 </div>
                 <div className="header-section mt-20 md:mt-[2rem] text-center w-full">
@@ -170,7 +170,7 @@ export default function LandingPage() {
                 </div>
 
 
-                <div className='h-[60vh]'>
+                <div className='h-[100vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">
