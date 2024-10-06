@@ -10,8 +10,24 @@ import SmoothScrolling from '@/utils/smoothscroll';
 Amplify.configure(config);
 
 export const metadata = {
-  title: "NBU STUDIO",
-  description: "NBU STUDIO, Aufnahme und Produktion von Musik und Sprache, in Kreuzlingen, Schweiz",
+  title: "NBU STUDIO | Professionelles Tonstudio in Kreuzlingen, Schweiz | Hip-Hop, Analogaufnahmen, Mixing & Mastering",
+  description: "NBU STUDIO ist Ihr professionelles Tonstudio in Kreuzlingen, Schweiz. Spezialisiert auf Hip-Hop und Pop, Analogaufnahmen, Gesangsaufnahmen, Mixing, Mastering, Coverart, Beratung, Songwriting und Producing. Wir bieten erstklassige Musikproduktionen mit extrem hochwertigem Equipment.",
+  keywords: [
+    "Tonstudio",
+    "Kreuzlingen",
+    "Schweiz",
+    "Hip-Hop",
+    "Analogaufnahmen",
+    "Gesangsaufnahmen",
+    "Mixing",
+    "Mastering",
+    "Coverart",
+    "Beratung",
+    "Songwriting",
+    "Producing",
+    "Musikproduktion",
+    "Hochwertiges Equipment"
+  ],
 };
 
 const poppins = Poppins({ weight: '400', subsets: ["latin"] });

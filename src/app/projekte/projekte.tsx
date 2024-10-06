@@ -53,7 +53,7 @@ export default function Projekte() {
                             <div className='flex flex-col h-full justify-evenly space-y-4 w-full md:w-[30%] m-2'>
                                 <h2 className="text-3xl font-bold uppercase">{project.title.S}</h2>
                                 <p className="text-black dark:text-custom-orange">{project.description.S}</p>
-                                {project.link && <a className="text-xs underline" href={'www.test.de'} >{project.link.S}</a>}
+                                {project.link && <a className="text-xs underline" href={project.link.S} >{project.link.S}</a>}
                             </div>
                             
                             { project.type.S === 'image' ? 
