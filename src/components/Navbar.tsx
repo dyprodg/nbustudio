@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ui/mode-toggle";
+import { Comfortaa } from '@next/font/google';
+
+const comfortaa = Comfortaa({ weight: '700', subsets: ['latin'] });
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -41,18 +44,17 @@ export default function Navbar() {
       initial={{ y: -150 }}
       animate={{ y: 0 }}
       transition={{ duration: 1 }}
-      className="flex h-[70px] fixed text-lg md:text-2xl top-0 z-50 w-full uppercase justify-evenly items-center font-bold bg-custom-orange dark:bg-black"
+      className="flex h-[70px] fixed text-lg md:text-xl top-0 z-50 w-full  justify-evenly items-center font-bold bg-custom-orange dark:bg-black"
     >
       <motion.div
-        className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/" || "/#home") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
-        }`}
-      >
-        {renderLink("home", "Home")}
-      </motion.div>
-
+          className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
+            isActive("/" || "/#home") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          } ${comfortaa.className}`} // Hier wird die Schriftart nur für diesen Bereich angewendet
+        >
+          {renderLink("home", "nbustudio")}
+        </motion.div>
       <motion.div
-        className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
+        className={`px-1 uppercase transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
           isActive("/#projekte") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
         }`}
       >
@@ -60,7 +62,7 @@ export default function Navbar() {
       </motion.div>
 
       <motion.div
-        className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
+        className={`px-1 uppercase transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
           isActive("/#kontakt") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
         }`}
       >

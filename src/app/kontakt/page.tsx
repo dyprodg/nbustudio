@@ -38,7 +38,10 @@ export default function Kontakt() {
     const isDisabled = !name || !email || !message || !agreed || loading;
 
     return (
-        <div className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30">
+        <div 
+        id="kontakt"
+        className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30"
+        >
             <h1 className="text-3xl text-center text-black dark:text-custom-orange m-4">Nehmen Sie jetzt mit mir Kontakt auf!</h1>
             {sendSuccess ? (
                 <CheckMark message={`Nachricht gesendet`} />

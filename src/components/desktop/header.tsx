@@ -113,8 +113,8 @@ export default function LandingPage() {
         <div className="w-[380px] md:w-full flex flex-col items-center">
             {/* Landing Header Section */}
             <div className='w-full bg-custom-orange dark:bg-black z-80 relative'>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-video.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-auto hidden md:block'/>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/nbu-bg-vertical.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-auto flex md:hidden'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-grey.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden md:block'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-grey.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[90vh] flex md:hidden'/>
             </div>
             
             <div className='header-container flex flex-col items-center w-full'>

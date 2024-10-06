@@ -17,6 +17,7 @@
     "@aws-sdk/client-kinesis": "^3.621.0",
     "@aws-sdk/client-personalize-events": "^3.621.0",
     "@aws-sdk/lib-dynamodb": "^3.592.0",
+    "@next/font": "^14.2.14",
     "@studio-freight/react-lenis": "^0.0.47",
     "@tsparticles/engine": "^3.4.0",
     "@tsparticles/react": "^3.0.0",

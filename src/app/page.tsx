@@ -1,7 +1,7 @@
 'use client';
 import LandingHeader from "@/components/desktop/header";
 import Projekte from "./projekte/projekte";
-import Kontakt from "./kontakt/kontakt";
+import Kontakt from "./kontakt/page";
 import { useState, useEffect } from "react";
 
 export default function Home() {

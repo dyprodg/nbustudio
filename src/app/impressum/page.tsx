@@ -10,8 +10,6 @@ export default function Impressum() {
             <p>info@nbustudio.ch</p>
             <p className="mt-12">Hauptverantwortlicher: </p>
             <p>Nico Buffelli</p>
-            <p className="mt-12">Steuernummer:</p>
-            <p>CHE-xxxxxxxxxxx</p>
             </div>
         </div>
     );
