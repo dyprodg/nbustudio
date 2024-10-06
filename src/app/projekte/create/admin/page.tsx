@@ -85,6 +85,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                     path: `uploads/${filename}`,
                     data: file,
                     options: {
+                        contentType: file.type,
                         onProgress: ({ transferredBytes, totalBytes }) => {
                             if (totalBytes) {
                                 const progress = Math.round((transferredBytes / totalBytes) * 100);

@@ -8,7 +8,10 @@ const nextConfig = {
                 pathname: '**',
             }
         ]
-    }
+    },
+    output: 'standalone',
+    reactStrictMode: true,
+    swcMinify: true,
 };
 
 export default nextConfig;
