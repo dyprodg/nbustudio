@@ -114,7 +114,7 @@ export default function LandingPage() {
             {/* Landing Header Section */}
             <div className='w-full bg-custom-orange dark:bg-black z-80 relative'>
                 <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-grey.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden md:block'/>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-orange.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[85vh] flex md:hidden'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-orange.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[80vh] flex md:hidden'/>
             </div>
             
             <div className='header-container flex flex-col items-center w-full'>
@@ -137,8 +137,8 @@ export default function LandingPage() {
                 </div>
             </div>
 
-            {/* Services Section */}
-            <div className="w-full flex flex-col mt-20 md:mt-[15rem]">
+            {/* Services Section Desktop */}
+            <div className="w-full flex-col mt-20 md:mt-[15rem] hidden md:flex">
                 <div className="services-wrapper w-full mt-[-2rem]">
                 <div className='w-full text-center text-3xl md:text-5xl font-bold'>
                     <h1>Unsere Leistungen</h1>
@@ -168,9 +168,60 @@ export default function LandingPage() {
                         ))}
                     </div>
                 </div>
-
-
                 <div className='h-[100vh]'>
+                </div>
+                <div className=''>
+                    <div className="p-10">
+                        <div className="text-3xl font-bold text-center uppercase">
+                            <Link 
+                                href={'/kontakt'}
+                                className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange'
+                            >
+                                Buchen
+                            </Link> 
+                            Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines <span className='font-bold text-custom-orange dark:text-black bg-black dark:bg-custom-orange'>professionellen Studios</span>.
+                        </div>
+                    </div>
+                    <div className="w-full flex justify-center">
+                        <Link 
+                            href={'/kontakt'}
+                            className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange text-4xl m-6 hover:scale-110 transition ease-in-out duration-200 animate-bounce uppercase p-4 rounded-full'
+                        >
+                            Buchen
+                        </Link> 
+                    </div>
+                </div>
+            </div>
+            {/* Services Section Mobile */}
+            <div className="w-full flex-col mt-20 md:mt-[15rem] flex md:hidden relative z-40">
+                <div className="w-full mt-[-2rem]">
+                <div className='w-full text-center text-3xl md:text-5xl font-bold'>
+                    <h1>Unsere Leistungen</h1>
+                </div>
+                <div className="m-8 lg:ml-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 relative z-50">
+                    {services.map((service, index) => (
+                        <div
+                            className={`service m-2 lg:m-[-1rem] ${
+                                index === 4 ? 'h-[70vh] lg:h-[75vh]' : 'h-[70vh] lg:h-[70vh]'
+                            }`}
+                            key={index}
+                        >
+                            {index === 4 && <div className="service-plate">complete</div>}
+                            <div className={`h-[100%] ${index === 4 ? 'mt-[4.5rem]' : 'mt-[3rem]'}`}>
+                                <div className="h-[50%]">
+                                    <h2 className="service-title">{service.title}</h2>
+                                    <p className="service-price">{service.price}</p>
+                                </div>
+                                <div>
+                                    <ul className="service-description">
+                                        <li>{service.description[0]}</li>
+                                        <li>{service.description[1]}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
                 </div>
                 <div className=''>
                     <div className="p-10">
