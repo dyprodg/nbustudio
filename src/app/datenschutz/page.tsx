@@ -32,7 +32,8 @@ export default function Datenschutz() {
                 <p className="text-xl font-bold">Nico Buffelli</p>
                 <p className="text-xl font-bold">NBU Studio</p>
                 <p className="text-xl font-bold">Rankstrasse 3, 8280 Kreuzlingen</p>
-                <p className="text-xl font-bold">info@nbustudio.ch</p>   
+                <p className="text-xl font-bold">info@nbustudio.ch</p>
+                <p className="text-xl font-bold">+41786381909</p>
                 </div>             
             <Footer />
         

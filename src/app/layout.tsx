@@ -44,7 +44,7 @@ export default function RootLayout({
           <SmoothScrolling>
           <Navbar />
           {children}
-          <Footer />
+          
           </SmoothScrolling>
           <CookieBanner />
         </ThemeProvider>

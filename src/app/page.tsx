@@ -3,6 +3,7 @@ import LandingHeader from "@/components/desktop/header";
 import Projekte from "./projekte/projekte";
 import Kontakt from "./kontakt/page";
 import { useState, useEffect } from "react";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const [projectsLoaded, setProjectsLoaded] = useState(false);
@@ -43,6 +44,7 @@ export default function Home() {
       {projectsLoaded && (
         <div id="kontakt" className="w-full">
           <Kontakt />
+          <Footer />
         </div>
       )}
     </div>
