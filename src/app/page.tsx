@@ -4,6 +4,7 @@ import Projekte from "./projekte/projekte";
 import Kontakt from "./kontakt/page";
 import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
+import BookingButton from "@/components/booking-button";
 
 export default function Home() {
   const [projectsLoaded, setProjectsLoaded] = useState(false);
@@ -35,7 +36,9 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full justify-center items-center">
       <div id="home">
+        
         <LandingHeader />
+        <BookingButton />
       </div>
       <div id="projekte">
         <Projekte />

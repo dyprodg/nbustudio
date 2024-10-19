@@ -135,7 +135,7 @@ export default function LandingPage() {
             </div>
 
             {/* Services Section Desktop */}
-            <div className="w-full flex-col mt-20 md:mt-[15rem] hidden md:flex">
+            <div className="w-full flex-col mt-20 md:mt-[15rem] hidden md:flex relative z-50">
                 <div className="services-wrapper w-full mt-[-2rem]">
                 <div className='w-full text-center text-3xl md:text-5xl font-bold'>
                     <h1>Unsere Leistungen</h1>
@@ -167,21 +167,6 @@ export default function LandingPage() {
                 </div>
                 <div className='h-[145vh] md:h-[110vh] lg:h-[110vh] xl:h-[110vh] 2xl:h-[110vh]'>
                 </div>
-                <div className=''>
-                    <div className="p-10">
-                        <div className="text-3xl font-bold text-center uppercase"> 
-                            Buchen Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines professionellen Studios.
-                        </div>
-                    </div>
-                    <div className="w-full flex justify-center">
-                        <Link 
-                            href={'/kontakt'}
-                            className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange text-4xl m-6 hover:scale-110 transition ease-in-out duration-200 animate-bounce uppercase p-4 rounded-full'
-                        >
-                            Buchen
-                        </Link> 
-                    </div>
-                </div>
             </div>
             {/* Services Section Mobile */}
             <div className="w-full flex-col mt-20 md:mt-[15rem] flex md:hidden relative z-40">
@@ -212,21 +197,6 @@ export default function LandingPage() {
                             </div>
                         </div>
                         ))}
-                    </div>
-                </div>
-                <div className=''>
-                    <div className="p-10">
-                        <div className="text-3xl font-bold text-center uppercase">
-                            Buchen Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines professionellen Studios.
-                        </div>
-                    </div>
-                    <div className="w-full flex justify-center">
-                        <Link 
-                            href={'/kontakt'}
-                            className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange text-4xl m-6 hover:scale-110 transition ease-in-out duration-200 animate-bounce uppercase p-4 rounded-full'
-                        >
-                            Buchen
-                        </Link> 
                     </div>
                 </div>
             </div>

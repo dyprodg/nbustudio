@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/ui/loading-spinner";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import Footer from "@/components/footer";
 
 
 export default function Kontakt() {
@@ -130,10 +131,9 @@ export default function Kontakt() {
                     )}
                 </div>
             )}
-            <div>
-                
+            <div> 
             </div>
-            
+            <Footer />           
         </div>
     );
 }
