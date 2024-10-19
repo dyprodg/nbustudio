@@ -57,7 +57,7 @@ export default function Projekte() {
                             </div>
                             
                             { project.type.S === 'image' ? 
-                            <div className="w-[280px] md:w-[380px] lg:w-[600px] bg-black border-2 border-black dark:border-custom-orange rounded-xl overflow-hidden">
+                            <div className="w-[280px] md:w-[380px] lg:w-[600px] max-h-[800px] bg-black border-2 border-black dark:border-custom-orange rounded-xl overflow-hidden">
                                 <Image src={project.url.S} alt={project.title.S} width={1920} height={1080} />
                             </div>
                             : null}
