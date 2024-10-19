@@ -47,7 +47,7 @@ export default function Kontakt() {
             className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30"
         >
             
-            <div className="w-[380px] flex justify-evenly text-black dark:text-custom-orange mb-10">
+            <div className="w-[380px] flex justify-evenly text-black dark:text-custom-orange mb-14">
                 <a
                     href="https://www.instagram.com/nbustudio"
                     className="hover:scale-110 transition ease-in-out duration-150"

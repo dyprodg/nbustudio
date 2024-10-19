@@ -39,7 +39,7 @@ export default function Projekte() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center mt-20 min-h-screen relative z-50" >
+        <div className="flex flex-col items-center mt-20 min-h-screen" >
             <h1 className="text-6xl font-bold">Projekte</h1>
             <div>
                 <p className="text-2xl text-center m-2 w-[380px]">Hier findest du alle Projekte, die ich bisher umgesetzt habe.</p>
@@ -91,7 +91,7 @@ export default function Projekte() {
                     ))
                 )}
             </div>
-            <div className="mt-32">
+            <div className="mt-48 md:mt-40 lg:mt-36 xl:mt-18">
             <Kontakt />
             </div>
             
