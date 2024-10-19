@@ -57,13 +57,13 @@ export default function Projekte() {
                             </div>
                             
                             { project.type.S === 'image' ? 
-                            <div className="w-[280px] md:w-[380px] lg:w-[600px] max-h-[800px] bg-black border-2 border-black dark:border-custom-orange rounded-xl overflow-hidden">
+                            <div className="w-[280px] md:w-[380px] lg:w-[600px] max-h-[600px] bg-black border-2 border-black dark:border-custom-orange rounded-xl overflow-hidden">
                                 <Image src={project.url.S} alt={project.title.S} width={1920} height={1080} />
                             </div>
                             : null}
                             {project.type.S === 'video' ? (
                             <div className="bg-black border-2 border-black dark:border-custom-orange rounded-2xl">
-                                <video className="w-[280px] md:w-[380px] lg:w-[600px] rounded-xl" controls>
+                                <video className="w-[280px] md:w-[380px] lg:w-[600px] max-h-[500px] rounded-xl" controls>
                                     <source src={project.url.S} type="video/mp4" />
                                 </video>
                             </div>

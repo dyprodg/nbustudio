@@ -4,6 +4,10 @@ import { sendMail } from "@/app/actions";
 import CheckMark from "@/components/ui/checkmark";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/ui/loading-spinner";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import Link from "next/link";
+
 
 export default function Kontakt() {
     const [name, setName] = useState("");
@@ -39,9 +43,28 @@ export default function Kontakt() {
 
     return (
         <div 
-        id="kontakt"
-        className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30"
-        >
+                id="kontakt"
+                className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30"
+                >
+                    <div className="w-[380px] flex justify-evenly text-black dark:text-custom-orange">
+            <a
+                href="https://www.instagram.com/nbustudio"
+                className="hover:scale-110 transition ease-in-out duration-150"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <FaInstagram size={58} />
+            </a>
+            <a
+                href="https://api.whatsapp.com/send?phone=+41786381909"
+                className="hover:scale-110 transition ease-in-out duration-150"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <FaWhatsapp size={58} />
+            </a>
+        </div>
+
             <h1 className="text-3xl text-center text-black dark:text-custom-orange m-4">Nehmen Sie jetzt mit mir Kontakt auf!</h1>
             {sendSuccess ? (
                 <CheckMark message={`Nachricht gesendet`} />

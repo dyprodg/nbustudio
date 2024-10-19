@@ -60,14 +60,6 @@ export default function LandingPage() {
 
     const services = [
         {
-            title: 'Cover Design',
-            price: '25CHF',
-            description: [
-                `Individuelle Gestaltung des Coverdesigns`,
-                `1x Anpassung inklusive`,
-            ]
-        },
-        {
             title: 'Beratung',
             price: '0CHF',
             description: [
@@ -83,8 +75,13 @@ export default function LandingPage() {
                 `Verwendung von hochwertigem analogem Equipment`,
             ]
         },
+        { title: 'Mixing', 
+            price: '250CHF', 
+            description: [ 'Kreative Gestaltung aller Audioelemente für einen harmonischen Gesamtklang, Einsatz fortschrittlicher Mixing-Techniken für erstklassige Resultate'] 
+
+        },
         {
-            title: 'Mixing && Mastering',
+            title: 'Mixing & Mastering',
             price: '350CHF',
             description: [
                 `Session Mixing mit hochwertigen, moderen Plugins`,
@@ -92,10 +89,10 @@ export default function LandingPage() {
             ]
         },
         {
-            title: 'Complete',
+            title: 'Bundle',
             price: '500CHF',
             description: [
-                `Recording, Mixing && Mastering`,
+                `Recording, Mixing & Mastering`,
                 `Das Rundum-Sorglos-Paket für Ihre Songproduktion`,
             ]
         },
@@ -113,7 +110,7 @@ export default function LandingPage() {
         <div className="w-[380px] md:w-full flex flex-col items-center overflow-y-hidden">
             {/* Landing Header Section */}
             <div className='w-full bg-custom-orange dark:bg-black z-80 relative'>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-grey.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden md:block'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-orange.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden md:block'/>
                 <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-orange.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[80vh] flex md:hidden'/>
             </div>
             
@@ -168,18 +165,12 @@ export default function LandingPage() {
                         ))}
                     </div>
                 </div>
-                <div className='h-[100vh]'>
+                <div className='h-[145vh] md:h-[100vh] lg:h-[100vh] xl:h-[100vh] 2xl:h-[100vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">
-                        <div className="text-3xl font-bold text-center uppercase">
-                            <Link 
-                                href={'/kontakt'}
-                                className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange'
-                            >
-                                Buchen
-                            </Link> 
-                            Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines <span className='font-bold text-custom-orange dark:text-black bg-black dark:bg-custom-orange'>professionellen Studios</span>.
+                        <div className="text-3xl font-bold text-center uppercase"> 
+                            Buchen Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines professionellen Studios.
                         </div>
                     </div>
                     <div className="w-full flex justify-center">
@@ -226,13 +217,7 @@ export default function LandingPage() {
                 <div className=''>
                     <div className="p-10">
                         <div className="text-3xl font-bold text-center uppercase">
-                            <Link 
-                                href={'/kontakt'}
-                                className='text-custom-orange dark:text-black bg-black dark:bg-custom-orange'
-                            >
-                                Buchen
-                            </Link> 
-                            Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines <span className='font-bold text-custom-orange dark:text-black bg-black dark:bg-custom-orange'>professionellen Studios</span>.
+                            Buchen Sie Ihre Sitzung noch heute und erleben Sie den Unterschied eines professionellen Studios.
                         </div>
                     </div>
                     <div className="w-full flex justify-center">

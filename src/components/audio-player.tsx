@@ -104,10 +104,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
   return (
     <div className="relative flex flex-col items-center gap-4 bg-black dark:bg-custom-orange rounded-lg shadow-md overflow-hidden">
       {image && (
-        <div className="absolute object-fit z-0">
-          <Image src={image} width={1920} height={1080} alt="Audio-Background-Image"/>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={image}
+            alt="Audio-Background-Image"
+            layout="fill"
+            className="object-cover object-center"
+          />
         </div>
-        )}
+      )}
       <div ref={waveformRef} className="w-full h-20 m-4 " />
       <div className="flex items-center gap-4 z-10">
         <button
