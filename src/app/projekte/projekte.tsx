@@ -84,17 +84,14 @@ export default function Projekte() {
                                         src={project.url.S}
                                     />
                                 </div>
-                                
                             </div> : null}
-                            
                         </div>
                     ))
                 )}
             </div>
-            <div className="mt-48 md:mt-40 lg:mt-36 xl:mt-18">
+            <div className="mt-48 md:mt-0">
             <Kontakt />
             </div>
-            
         </div>
     );
 }

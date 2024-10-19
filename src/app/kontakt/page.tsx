@@ -47,7 +47,7 @@ export default function Kontakt() {
             className="w-full h-screen flex flex-col justify-center items-center text-white relative z-30"
         >
             
-            <div className="w-[380px] flex justify-evenly text-black dark:text-custom-orange mb-14">
+            <div className="w-[380px] flex justify-evenly text-black dark:text-custom-orange mb-20">
                 <a
                     href="https://www.instagram.com/nbustudio"
                     className="hover:scale-110 transition ease-in-out duration-150"
@@ -58,7 +58,7 @@ export default function Kontakt() {
                 </a>
                 <a
                     href="https://api.whatsapp.com/send?phone=+41786381909"
-                    className="hover:scale-110 transition ease-in-out duration-150"
+                    className="hover:scale-110 transition ease-in-out duration-150 block lg:hidden"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

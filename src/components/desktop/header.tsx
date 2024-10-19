@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
 import './service.css';
 import FlybyText from '../flighbytext';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,8 +111,8 @@ export default function LandingPage() {
         <div className="w-[380px] md:w-full flex flex-col items-center overflow-y-hidden">
             {/* Landing Header Section */}
             <div className='w-full bg-custom-orange dark:bg-black z-80 relative'>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-orange.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden md:block'/>
-                <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-orange.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[80vh] flex md:hidden'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/horizontal-orange.mp4' playsInline autoPlay loop muted className='mt-12 object-cover w-full z-80 h-[90vh] hidden lg:block'/>
+                <video src='https://d1m1gpuwwhckwg.cloudfront.net/vertical-orange.mp4' playsInline autoPlay loop muted className='mt-16 object-cover w-full h-[80vh] flex lg:hidden'/>
             </div>
             
             <div className='header-container flex flex-col items-center w-full'>
@@ -134,8 +135,18 @@ export default function LandingPage() {
                 </div>
             </div>
 
+            <div className='w-full h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] object-cover overflow-hidden object-center'>
+                <Image 
+                    alt='studio'
+                    src='/fullstudio-wide.JPG'
+                    quality={100}
+                    width={2560}
+                    height={800}
+                    className='object-cover object-center'
+                />
+            </div>
             {/* Services Section Desktop */}
-            <div className="w-full flex-col mt-20 md:mt-[15rem] hidden md:flex relative z-50">
+            <div className="w-full flex-col mt-20 md:mt-[15rem] hidden md:flex relative z-40">
                 <div className="services-wrapper w-full mt-[-2rem]">
                 <div className='w-full text-center text-3xl md:text-5xl font-bold'>
                     <h1>Unsere Leistungen</h1>
@@ -144,7 +155,7 @@ export default function LandingPage() {
                     {services.map((service, index) => (
                         <div
                             className={`service m-2 lg:m-[-1rem] ${
-                                index === 4 ? 'h-[70vh] lg:h-[75vh]' : 'h-[70vh] lg:h-[70vh]'
+                                index === 4 ? 'h-[70vh] lg:h-[70vh]' : 'h-[70vh] lg:h-[60vh]'
                             }`}
                             key={index}
                         >
@@ -165,7 +176,7 @@ export default function LandingPage() {
                         ))}
                     </div>
                 </div>
-                <div className='h-[145vh] md:h-[110vh] lg:h-[110vh] xl:h-[110vh] 2xl:h-[110vh]'>
+                <div className='h-[145vh] md:h-[80vh] lg:h-[80vh] xl:h-[85vh] 2xl:h-[80vh]'>
                 </div>
             </div>
             {/* Services Section Mobile */}
