@@ -165,7 +165,7 @@ export default function LandingPage() {
                         ))}
                     </div>
                 </div>
-                <div className='h-[145vh] md:h-[100vh] lg:h-[100vh] xl:h-[100vh] 2xl:h-[100vh]'>
+                <div className='h-[145vh] md:h-[110vh] lg:h-[110vh] xl:h-[110vh] 2xl:h-[110vh]'>
                 </div>
                 <div className=''>
                     <div className="p-10">

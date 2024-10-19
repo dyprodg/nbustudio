@@ -40,13 +40,14 @@ export default function Home() {
       <div id="projekte">
         <Projekte />
       </div>
-      
+      {/* 
       {projectsLoaded && (
         <div id="kontakt" className="w-full">
           <Kontakt />
           <Footer />
         </div>
       )}
+        */}
     </div>
   );
 }

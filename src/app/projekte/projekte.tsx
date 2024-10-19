@@ -5,6 +5,8 @@ import { get } from 'aws-amplify/api';
 import { Amplify } from 'aws-amplify';
 import config from '@/amplifyconfiguration.json';
 import AudioPlayer from "@/components/audio-player";
+import Kontakt from "../kontakt/page";
+import Footer from "@/components/footer";
 Amplify.configure(config);
 
 interface Project {
@@ -88,6 +90,8 @@ export default function Projekte() {
                     ))
                 )}
             </div>
+            <Kontakt />
+            <Footer />
         </div>
     );
 }
