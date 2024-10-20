@@ -2,12 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
-import {
-  FaPlay,
-  FaPause,
-  FaVolumeUp,
-  FaStop,
-} from "react-icons/fa";
+import { FaPlay, FaPause, FaVolumeUp, FaStop } from "react-icons/fa";
 import Image from "next/image";
 
 interface AudioPlayerProps {

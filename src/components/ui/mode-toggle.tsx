@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -21,8 +21,8 @@ export default function ThemeToggle() {
           type="checkbox"
           id="theme-toggle"
           className="sr-only"
-          checked={theme === 'dark'}
-          onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          checked={theme === "dark"}
+          onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
         />
         <label
           htmlFor="theme-toggle"
@@ -30,10 +30,10 @@ export default function ThemeToggle() {
         >
           <div
             className={`absolute flex justify-center items-center top-1 left-1 w-6 h-6 bg-black rounded-full transition-transform ${
-              theme === 'dark' ? 'transform translate-x-6 bg-ff6c2c' : ''
+              theme === "dark" ? "transform translate-x-6 bg-ff6c2c" : ""
             }`}
           >
-            {theme === 'dark' ? (
+            {theme === "dark" ? (
               <FaMoon size={14} className="text-custom-orange" />
             ) : (
               <FaSun size={14} className="text-custom-orange" />

@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 
 const CheckMark = ({ message }: { message: string }) => {
   const { theme } = useTheme();
-  const strokeColor = theme === 'dark' ? '#ff6c2c' : '#000000';
+  const strokeColor = theme === "dark" ? "#ff6c2c" : "#000000";
 
   return (
     <div className="mt-8 m-8 flex flex-col items-center justify-center">
@@ -33,7 +33,9 @@ const CheckMark = ({ message }: { message: string }) => {
           points="100.2,40.2 51.5,88.8 29.8,67.5"
         />
       </svg>
-      <p className="mt-4 text-center text-black dark:text-custom-orange text-3xl">{message}</p>
+      <p className="mt-4 text-center text-black dark:text-custom-orange text-3xl">
+        {message}
+      </p>
     </div>
   );
 };

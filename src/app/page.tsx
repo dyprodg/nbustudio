@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import LandingHeader from "@/components/desktop/header";
 import Projekte from "./projekte/projekte";
 import Kontakt from "./kontakt/page";
@@ -36,21 +36,12 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full justify-center items-center">
       <div id="home">
-        
         <LandingHeader />
         <BookingButton />
       </div>
       <div id="projekte">
         <Projekte />
       </div>
-      {/* 
-      {projectsLoaded && (
-        <div id="kontakt" className="w-full">
-          <Kontakt />
-          <Footer />
-        </div>
-      )}
-        */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Define the props for the Cross component
 interface CrossProps {
@@ -7,7 +7,7 @@ interface CrossProps {
 }
 
 // Create the Cross component
-const Cross: React.FC<CrossProps> = ({ size = 24, color = 'currentColor' }) => (
+const Cross: React.FC<CrossProps> = ({ size = 24, color = "currentColor" }) => (
   <svg
     width={size}
     height={size}

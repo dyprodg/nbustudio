@@ -21,11 +21,12 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ease: "easeOut", duration: 0.5 }}
-      className="fixed border border-black dark:border-custom-orange bottom-0 left-0 right-0 bg-custom-orange dark:bg-black text-black dark:text-custom-orange p-2 flex justify-between items-center z-50">
+      className="fixed border border-black dark:border-custom-orange bottom-0 left-0 right-0 bg-custom-orange dark:bg-black text-black dark:text-custom-orange p-2 flex justify-between items-center z-50"
+    >
       <div>
         {`Diese Website verwendet nur technisch notwendige Cookies, um die
         Funktionalität der Website zu gewährleisten. Es werden keine Cookies gespeichert, die für die

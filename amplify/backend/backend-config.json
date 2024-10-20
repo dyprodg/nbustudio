@@ -3,10 +3,7 @@
     "apic4d3be1d": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "nbustudio65de7524"
         }
@@ -17,18 +14,12 @@
     "post": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "postcreate"
         },
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "postdelete"
         }
@@ -39,10 +30,7 @@
     "postsget": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "postsget"
         }
@@ -57,23 +45,15 @@
       "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
+        "mfaTypes": ["SMS"],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": ["EMAIL"],
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+        "usernameAttributes": ["EMAIL"],
+        "verificationMechanisms": ["EMAIL"]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
@@ -89,11 +69,7 @@
       "build": true,
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
+          "attributes": ["Name", "Arn", "StreamArn"],
           "category": "storage",
           "resourceName": "projects"
         }
@@ -105,11 +81,7 @@
       "build": true,
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
+          "attributes": ["Name", "Arn", "StreamArn"],
           "category": "storage",
           "resourceName": "projects"
         }
@@ -121,11 +93,7 @@
       "build": true,
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
+          "attributes": ["Name", "Arn", "StreamArn"],
           "category": "storage",
           "resourceName": "projects"
         }

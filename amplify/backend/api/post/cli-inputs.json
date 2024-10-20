@@ -6,9 +6,7 @@
       "lambdaFunction": "postcreate",
       "permissions": {
         "setting": "private",
-        "auth": [
-          "create"
-        ]
+        "auth": ["create"]
       }
     },
     "/delete": {
@@ -16,9 +14,7 @@
       "lambdaFunction": "postdelete",
       "permissions": {
         "setting": "private",
-        "auth": [
-          "delete"
-        ]
+        "auth": ["delete"]
       }
     }
   }

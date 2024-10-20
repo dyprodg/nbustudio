@@ -1,13 +1,13 @@
-'use client';
+"use client";
 import { Link as ScrollLink } from "react-scroll";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ui/mode-toggle";
-import { Comfortaa } from '@next/font/google';
+import { Comfortaa } from "next/font/google";
 
-const comfortaa = Comfortaa({ weight: '700', subsets: ['latin'] });
+const comfortaa = Comfortaa({ weight: "700", subsets: ["latin"] });
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ export default function Navbar() {
 
   // Helper function to render either scroll link or regular link
   const renderLink = (to: string, name: string) => {
-    if (pathname === '/#' || pathname === '/') {
+    if (pathname === "/#" || pathname === "/") {
       // Use ScrollLink for smooth scrolling when on the homepage
       return (
         <ScrollLink
@@ -47,15 +47,19 @@ export default function Navbar() {
       className="flex h-[70px] fixed text-lg md:text-xl top-0 z-50 w-full  justify-evenly items-center font-bold bg-custom-orange dark:bg-black"
     >
       <motion.div
-          className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-            isActive("/" || "/#home") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
-          } ${comfortaa.className}`} // Hier wird die Schriftart nur für diesen Bereich angewendet
-        >
-          {renderLink("home", "nbustudio")}
-        </motion.div>
+        className={`px-1 transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
+          isActive("/" || "/#home")
+            ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange"
+            : ""
+        } ${comfortaa.className}`} // Hier wird die Schriftart nur für diesen Bereich angewendet
+      >
+        {renderLink("home", "nbustudio")}
+      </motion.div>
       <motion.div
         className={`px-1 uppercase transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/#projekte") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          isActive("/#projekte")
+            ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange"
+            : ""
         }`}
       >
         {renderLink("projekte", "Projekte")}
@@ -63,7 +67,9 @@ export default function Navbar() {
 
       <motion.div
         className={`px-1 uppercase transition duration-100 ease-in-out hover:text-custom-orange hover:dark:text-black hover:bg-black hover:dark:bg-custom-orange ${
-          isActive("/#kontakt") ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange" : ""
+          isActive("/#kontakt")
+            ? "text-custom-orange dark:text-black bg-black dark:bg-custom-orange"
+            : ""
         }`}
       >
         <div
@@ -90,7 +96,10 @@ export default function Navbar() {
                     AGB
                   </p>
                 </Link>
-                <Link href="/datenschutz" onClick={() => setDropdownOpen(false)}>
+                <Link
+                  href="/datenschutz"
+                  onClick={() => setDropdownOpen(false)}
+                >
                   <p className="p-2 hover:bg-gray-200 dark:hover:bg-neutral-700">
                     Datenschutz
                   </p>

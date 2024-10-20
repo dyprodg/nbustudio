@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 interface IconProps {
   size?: number;
   color?: string;
 }
 
-const Logo: React.FC<IconProps> = ({ size = 24, color = 'black' }) => {
+const Logo: React.FC<IconProps> = ({ size = 24, color = "black" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

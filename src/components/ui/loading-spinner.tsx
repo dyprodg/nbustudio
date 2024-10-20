@@ -1,24 +1,24 @@
-import React from 'react';
-import { useTheme } from 'next-themes';
+import React from "react";
+import { useTheme } from "next-themes";
 
 const LoadingSpinner: React.FC = () => {
   const { theme } = useTheme();
 
   const spinnerStyle: React.CSSProperties = {
-    display: 'inline-block',
-    width: '80px',
-    height: '80px',
-    border: '8px solid rgba(0, 0, 0, 0.1)',
-    borderRadius: '50%',
-    borderTopColor: theme === 'dark' ? '#ff6c2c' : '#000',
-    animation: 'spin 1s linear infinite',
+    display: "inline-block",
+    width: "80px",
+    height: "80px",
+    border: "8px solid rgba(0, 0, 0, 0.1)",
+    borderRadius: "50%",
+    borderTopColor: theme === "dark" ? "#ff6c2c" : "#000",
+    animation: "spin 1s linear infinite",
   };
 
   const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '20vh',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "20vh",
   };
 
   return (

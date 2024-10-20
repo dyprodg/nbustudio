@@ -6,11 +6,11 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class', // Dark mode should be set here, not inside `extend`
+  darkMode: "class", // Dark mode should be set here, not inside `extend`
   theme: {
     extend: {
       colors: {
-        'custom-orange': 'rgb(255, 108, 44)',
+        "custom-orange": "rgb(255, 108, 44)",
       },
     },
   },
