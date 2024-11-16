@@ -6,7 +6,6 @@ import { Amplify } from "aws-amplify";
 import config from "@/amplifyconfiguration.json";
 import AudioPlayer from "@/components/audio-player";
 import Kontakt from "../kontakt/page";
-import Footer from "@/components/footer";
 Amplify.configure(config);
 
 interface Project {

@@ -45,7 +45,7 @@ export default function LandingPage() {
       scrollTrigger: {
         trigger: ".services-wrapper",
         start: "top-=100 top",
-        end: "+=1000",
+        end: "+=800",
         scrub: true,
         pin: true,
         markers: false,
@@ -193,7 +193,7 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-        <div className="h-[145vh] md:h-[80vh] lg:h-[80vh] xl:h-[85vh] 2xl:h-[80vh]"></div>
+        <div className="h-[145vh] md:h-[100vh] lg:h-[100vh] xl:h-[85vh] 2xl:h-[80vh]"></div>
       </div>
       {/* Services Section Mobile */}
       <div className="w-full flex-col mt-20 md:mt-[15rem] flex md:hidden relative z-40">
