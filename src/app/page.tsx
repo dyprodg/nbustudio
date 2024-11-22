@@ -1,9 +1,7 @@
 "use client";
 import LandingHeader from "@/components/desktop/header";
 import Projekte from "./projekte/projekte";
-import Kontakt from "./kontakt/page";
 import { useState, useEffect } from "react";
-import Footer from "@/components/footer";
 import BookingButton from "@/components/booking-button";
 
 export default function Home() {

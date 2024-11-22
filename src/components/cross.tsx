@@ -1,6 +1,6 @@
 import React from "react";
 
-// Define the props for the Cross component
+
 interface CrossProps {
   size?: number;
   color?: string;

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ScrollLink } from "react-scroll";
 
 export default function BookingButton() {
   return (
