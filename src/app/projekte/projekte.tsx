@@ -45,7 +45,7 @@ export default function Projekte() {
       <h1 className="text-6xl font-bold">Projekte</h1>
       <div>
         <p className="text-2xl text-center m-2 w-[380px]">
-          Hier findest du alle Projekte, die ich bisher umgesetzt habe.
+          Hier finden sie alle Projekte, die ich bisher umgesetzt habe.
         </p>
       </div>
 
