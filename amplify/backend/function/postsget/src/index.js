@@ -10,9 +10,9 @@ exports.handler = async (event) => {
 
   try {
     const data = await client.send(new ScanCommand(params));
-    // Sortieren nach 'createdAt' (numerisch absteigend)
+    // Sortieren nach 'position' (numerisch absteigend)
     const sortedItems = data.Items.sort(
-      (a, b) => parseInt(b.createdAt.N) - parseInt(a.createdAt.N)
+      (a, b) => parseInt(b.position.N) - parseInt(a.position.N)
     );
     return {
       statusCode: 200,

@@ -211,6 +211,40 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
     fetchProjects();
   };
 
+  const handlePositionChange = async (postId:string, direction:string) => {
+    try {
+      const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
+      if (!authToken) {
+        console.error("No auth token");
+        return;
+      }
+  
+      const restOperation = post({
+        apiName: "post",
+        path: "/changepost",
+        options: {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: {
+            postId,
+            direction, // "up" oder "down"
+          },
+        },
+      });
+  
+      const { body } = await restOperation.response;
+      const response = await body.json();
+      console.log("Position change successful: ", response);
+  
+      // Projekte neu laden
+      fetchProjects();
+    } catch (error) {
+      console.error("Position change failed: ", error);
+    }
+  };
+  
+
   return (
     <div className="flex flex-col items-center mt-20 min-h-screen">
       <div className="text-2xl flex justify-center items-center">
@@ -284,8 +318,29 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
 
       <div className="w-full h-auto flex flex-col items-center space-y-2 mt-8">
         {projects.map((project: any, index: number) => (
+          <div key={index} className="flex">
+            <div className="m-2">
+              Position: 
+              <div>
+                {project.position.N}
+              </div>
+              <div className="flex space-x-2 mt-4">
+        <button
+          className="border-2 px-4 py-2 bg-green-500 text-white rounded hover:scale-105"
+          onClick={() => handlePositionChange(project.postId.S, "up")}
+        >
+          ↑
+        </button>
+        <button
+          className="border-2 px-4 py-2 bg-red-500 text-white rounded hover:scale-105"
+          onClick={() => handlePositionChange(project.postId.S, "down")}
+        >
+          ↓
+        </button>
+      </div>
+            </div>
           <div
-            key={index}
+            
             className="bg-gradient-to-br from-custom-orange dark:from-black from-0% via-custom-orange dark:via-black via-60% to-black dark:to-custom-orange to-80 md:to-70%
                         p-4 border-2 shadow-xl border-black dark:border-custom-orange rounded-lg w-[380px] md:w-[700px] lg:w-[1000px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left justify-between"
           >
@@ -353,6 +408,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
                 )}
               </div>
             ) : null}
+          </div>
           </div>
         ))}
       </div>

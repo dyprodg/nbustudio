@@ -31,6 +31,14 @@
           ],
           "category": "function",
           "resourceName": "postdelete"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "changepost"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -80,6 +88,22 @@
     }
   },
   "function": {
+    "changepost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "projects"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "nbustudio65de7524": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -142,6 +166,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_changepost_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "changepost"
+        }
+      ]
+    },
+    "AMPLIFY_function_changepost_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "changepost"
+        }
+      ]
+    },
     "AMPLIFY_function_nbustudio65de7524_deploymentBucketName": {
       "usedBy": [
         {

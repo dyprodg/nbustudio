@@ -26,14 +26,14 @@
         },
         "postcreate": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
-          "s3Key": "amplify-builds/postcreate-3341566f4d4339737764-build.zip",
+          "s3Key": "amplify-builds/postcreate-47592f334f316d627338-build.zip",
           "cloudfrontUrl": "https://d2h4n766jut7m4.cloudfront.net",
           "awsBucketName": "nbustudio-content76f6a-dev",
           "region": "eu-central-1"
         },
         "postsget": {
           "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
-          "s3Key": "amplify-builds/postsget-2b776464737270587037-build.zip",
+          "s3Key": "amplify-builds/postsget-57646e554b6e52654437-build.zip",
           "region": "eu-central-1",
           "tablename": "projects-dev"
         },
@@ -42,6 +42,10 @@
           "s3Key": "amplify-builds/postdelete-38796766617070327379-build.zip",
           "tablename": "projects-dev",
           "region": "eu-central-1"
+        },
+        "changepost": {
+          "deploymentBucketName": "amplify-nbustudio-dev-76f6a-deployment",
+          "s3Key": "amplify-builds/changepost-2b3136566a744b317050-build.zip"
         }
       },
       "api": {

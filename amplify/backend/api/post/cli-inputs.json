@@ -6,7 +6,9 @@
       "lambdaFunction": "postcreate",
       "permissions": {
         "setting": "private",
-        "auth": ["create"]
+        "auth": [
+          "create"
+        ]
       }
     },
     "/delete": {
@@ -14,7 +16,22 @@
       "lambdaFunction": "postdelete",
       "permissions": {
         "setting": "private",
-        "auth": ["delete"]
+        "auth": [
+          "delete"
+        ]
+      }
+    },
+    "/changepost": {
+      "name": "/changepost",
+      "lambdaFunction": "changepost",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
       }
     }
   }
