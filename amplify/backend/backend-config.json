@@ -30,7 +30,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "postdelete"
+          "resourceName": "changepost"
         },
         {
           "attributes": [
@@ -38,7 +38,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "changepost"
+          "resourceName": "postdelete"
         }
       ],
       "providerPlugin": "awscloudformation",

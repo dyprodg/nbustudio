@@ -143,9 +143,6 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
         apiName: "post",
         path: "/create",
         options: {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
           body: {
             type: filetype.split("/")[0],
             title: postTitle,
@@ -181,9 +178,6 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
         apiName: "post",
         path: "/delete",
         options: {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
           body: {
             postId: id,
           },
@@ -213,19 +207,11 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
 
   const handlePositionChange = async (postId:string, direction:string) => {
     try {
-      const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
-      if (!authToken) {
-        console.error("No auth token");
-        return;
-      }
-  
+
       const restOperation = post({
         apiName: "post",
         path: "/changepost",
         options: {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
           body: {
             postId,
             direction, // "up" oder "down"
@@ -322,7 +308,7 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
             <div className="m-2">
               Position: 
               <div>
-                {project.position.N}
+              {project.itemPosition.N}
               </div>
               <div className="flex space-x-2 mt-4">
         <button

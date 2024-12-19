@@ -28,13 +28,13 @@
       "Type": "String",
       "Default": "storageprojectsStreamArn"
     },
+    "region": {
+      "Type": "String"
+    },
     "cloudfrontUrl": {
       "Type": "String"
     },
     "awsBucketName": {
-      "Type": "String"
-    },
-    "region": {
       "Type": "String"
     }
   },
@@ -89,7 +89,7 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "region"
+              "Ref": "AWS::Region"
             },
             "STORAGE_PROJECTS_NAME": {
               "Ref": "storageprojectsName"
@@ -222,7 +222,14 @@
                 "dynamodb:Put*",
                 "dynamodb:Create*",
                 "dynamodb:BatchWriteItem",
-                "dynamodb:PartiQLInsert"
+                "dynamodb:PartiQLInsert",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:PartiQLSelect"
               ],
               "Resource": [
                 {

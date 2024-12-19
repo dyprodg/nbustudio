@@ -11,19 +11,16 @@
         ]
       }
     },
-    "/delete": {
-      "name": "/delete",
-      "lambdaFunction": "postdelete",
-      "permissions": {
-        "setting": "private",
-        "auth": [
-          "delete"
-        ]
-      }
-    },
     "/changepost": {
       "name": "/changepost",
       "lambdaFunction": "changepost",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/delete": {
+      "name": "/delete",
+      "lambdaFunction": "postdelete",
       "permissions": {
         "setting": "private",
         "auth": [

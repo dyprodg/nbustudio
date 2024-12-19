@@ -1,11 +1,18 @@
 {
   "permissions": {
     "storage": {
-      "projects": ["create"]
+      "projects": [
+        "create",
+        "read"
+      ]
     }
   },
   "lambdaLayers": [],
   "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "region",
+      "environmentVariableName": "REGION"
+    },
     {
       "cloudFormationParameterName": "cloudfrontUrl",
       "environmentVariableName": "CLOUDFRONT_URL"
@@ -13,10 +20,6 @@
     {
       "cloudFormationParameterName": "awsBucketName",
       "environmentVariableName": "AWS_BUCKET_NAME"
-    },
-    {
-      "cloudFormationParameterName": "region",
-      "environmentVariableName": "REGION"
     }
   ]
 }

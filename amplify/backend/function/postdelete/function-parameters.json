@@ -1,18 +1,22 @@
 {
   "permissions": {
     "storage": {
-      "projects": ["delete"]
+      "projects": [
+        "read",
+        "update",
+        "delete"
+      ]
     }
   },
   "lambdaLayers": [],
   "environmentVariableList": [
     {
-      "cloudFormationParameterName": "tablename",
-      "environmentVariableName": "TABLENAME"
-    },
-    {
       "cloudFormationParameterName": "region",
       "environmentVariableName": "REGION"
+    },
+    {
+      "cloudFormationParameterName": "tablename",
+      "environmentVariableName": "TABLENAME"
     }
   ]
 }

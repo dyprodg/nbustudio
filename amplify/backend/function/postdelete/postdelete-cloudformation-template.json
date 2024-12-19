@@ -28,10 +28,10 @@
       "Type": "String",
       "Default": "storageprojectsStreamArn"
     },
-    "tablename": {
+    "region": {
       "Type": "String"
     },
-    "region": {
+    "tablename": {
       "Type": "String"
     }
   },
@@ -86,7 +86,7 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "region"
+              "Ref": "AWS::Region"
             },
             "STORAGE_PROJECTS_NAME": {
               "Ref": "storageprojectsName"
@@ -213,6 +213,16 @@
             {
               "Effect": "Allow",
               "Action": [
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:PartiQLSelect",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:PartiQLUpdate",
                 "dynamodb:Delete*",
                 "dynamodb:PartiQLDelete"
               ],

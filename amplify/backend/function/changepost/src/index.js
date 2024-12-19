@@ -41,14 +41,17 @@ exports.handler = async (event) => {
             };
         }
 
-        const currentPosition = currentPost.position;
+        const currentPosition = currentPost.itemPosition; // Geändertes Attribut
         const targetPosition = direction === "up" ? currentPosition + 1 : currentPosition - 1;
 
         // Query the post at the target position
         const targetPostResult = await dynamoDb
             .scan({
                 TableName: tableName,
-                FilterExpression: "position = :position",
+                FilterExpression: "#itemPosition = :position", // Geändertes Attribut
+                ExpressionAttributeNames: {
+                    "#itemPosition": "itemPosition", // Geändertes Attribut
+                },
                 ExpressionAttributeValues: { ":position": targetPosition },
             })
             .promise();
@@ -60,7 +63,10 @@ exports.handler = async (event) => {
             .update({
                 TableName: tableName,
                 Key: { postId },
-                UpdateExpression: "set position = :newPosition",
+                UpdateExpression: "set #itemPosition = :newPosition", // Geändertes Attribut
+                ExpressionAttributeNames: {
+                    "#itemPosition": "itemPosition", // Geändertes Attribut
+                },
                 ExpressionAttributeValues: {
                     ":newPosition": targetPosition,
                 },
@@ -73,7 +79,10 @@ exports.handler = async (event) => {
                 .update({
                     TableName: tableName,
                     Key: { postId: targetPost.postId },
-                    UpdateExpression: "set position = :newPosition",
+                    UpdateExpression: "set #itemPosition = :newPosition", // Geändertes Attribut
+                    ExpressionAttributeNames: {
+                        "#itemPosition": "itemPosition", // Geändertes Attribut
+                    },
                     ExpressionAttributeValues: {
                         ":newPosition": currentPosition,
                     },

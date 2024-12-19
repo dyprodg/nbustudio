@@ -21,7 +21,7 @@ exports.handler = async (event) => {
   const { postId } = JSON.parse(event.body);
 
   const command = new DeleteItemCommand({
-    TableName: process.env.TABLENAME,
+    TableName: "projects-dev",
     Key: {
       postId: {
         S: postId,
