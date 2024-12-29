@@ -172,7 +172,6 @@ function Page({ signOut, user }: WithAuthenticatorProps) {
   };
 
   const handleDelete = async (id: string, name: string) => {
-    const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
     try {
       const restOperation = post({
         apiName: "post",

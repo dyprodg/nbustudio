@@ -11,13 +11,6 @@
         ]
       }
     },
-    "/changepost": {
-      "name": "/changepost",
-      "lambdaFunction": "changepost",
-      "permissions": {
-        "setting": "open"
-      }
-    },
     "/delete": {
       "name": "/delete",
       "lambdaFunction": "postdelete",
@@ -28,6 +21,18 @@
           "read",
           "update",
           "delete"
+        ]
+      }
+    },
+    "/changepost": {
+      "name": "/changepost",
+      "lambdaFunction": "changepost",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
         ]
       }
     }

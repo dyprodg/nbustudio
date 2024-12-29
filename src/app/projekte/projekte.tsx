@@ -102,8 +102,23 @@ export default function Projekte() {
                       image={project.imageUrl ? project.imageUrl.S : undefined}
                     />
                   </div>
-                  <div className="p-5 w-[280px] md:w-[380px] lg:w-[600px] flex md:hidden">
+                  <div className="p-5 w-[280px] md:w-[380px] lg:w-[600px] flex flex-col justify-center items-center md:hidden">
+                  {project.imageUrl ? (
+                    <div
+                     className="rounded-xl rounded-b-none overflow-hidden"
+                    >
+                    <Image
+                    className=""
+                    src={project.imageUrl.S}
+                    alt="project-image"
+                    width={350}
+                    height={350}
+                    />
+                  
+                    </div>
+                    ): null}
                     <audio controls src={project.url.S} />
+                    
                   </div>
                 </div>
               ) : null}

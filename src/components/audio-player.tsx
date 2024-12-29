@@ -13,13 +13,15 @@ interface AudioPlayerProps {
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
   const waveformRef = useRef<HTMLDivElement | null>(null);
   const wavesurfer = useRef<WaveSurfer | null>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(1); // Default volume set to max (1)
+  const [volume, setVolume] = useState(1);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // <<-- loading state
+
   const volumeTimeoutRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    // Cleanup on component unmount
     return () => {
       if (wavesurfer.current) {
         wavesurfer.current.destroy();
@@ -28,39 +30,40 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
     };
   }, []);
 
-  const createWaveSurferInstance = () => {
+  // modified to accept 'autoPlay' to fix double-click
+  const createWaveSurferInstance = (autoPlay: boolean) => {
     if (waveformRef.current && !wavesurfer.current) {
-      // Create a new WaveSurfer instance
+      setIsLoading(true); // we are loading now
       wavesurfer.current = WaveSurfer.create({
         container: waveformRef.current,
         waveColor: "#525252",
         progressColor: "#ff6c2c",
         height: 80,
         barWidth: 2,
-        barHeight: 1, // Bar Height relative to the waveHeight
+        barHeight: 1,
         barGap: 1,
         normalize: true,
       });
-
       wavesurfer.current.load(src);
 
       wavesurfer.current.on("ready", () => {
-        console.log("Waveform is ready");
-        if (isPlaying) {
+        setIsLoading(false); // done loading
+        if (autoPlay) {
           wavesurfer.current?.play();
+          setIsPlaying(true);
         }
       });
 
       wavesurfer.current.on("finish", () => {
-        console.log("Song finished");
         setIsPlaying(false);
       });
     }
   };
 
+  // fix double-click by passing 'true' if wavesurfer nicht existiert
   const togglePlayPause = () => {
     if (!wavesurfer.current) {
-      createWaveSurferInstance();
+      createWaveSurferInstance(true);
     } else {
       wavesurfer.current.playPause();
       setIsPlaying(!isPlaying);
@@ -76,7 +79,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
 
   const handleVolumeClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!wavesurfer.current) return;
-
     const rect = (event.target as HTMLDivElement).getBoundingClientRect();
     const clickPosition = rect.bottom - event.clientY;
     const newVolume = clickPosition / rect.height;
@@ -86,7 +88,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
 
   const toggleVolumeControl = () => {
     setShowVolumeControl(!showVolumeControl);
-
     if (!showVolumeControl) {
       volumeTimeoutRef.current = window.setTimeout(() => {
         setShowVolumeControl(false);
@@ -103,12 +104,21 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
           <Image
             src={image}
             alt="Audio-Background-Image"
-            layout="fill"
+            fill
             className="object-cover object-center"
           />
         </div>
       )}
-      <div ref={waveformRef} className="w-full h-20 m-4 " />
+
+      {/* Loading-Anzeige */}
+      {isLoading && (
+        <div className="absolute flex items-center justify-center w-full h-full bg-black/50 z-20">
+          <span className="text-white">Loading ...</span>
+        </div>
+      )}
+
+      <div ref={waveformRef} className="w-full h-20 m-4" />
+
       <div className="flex items-center gap-4 z-10">
         <button
           onClick={togglePlayPause}
@@ -116,18 +126,21 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, image }) => {
         >
           {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
         </button>
+
         <button
           onClick={handleStop}
           className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-in-out duration-200 p-2 m-4"
         >
           <FaStop size={16} />
         </button>
+
         <button
           onClick={toggleVolumeControl}
           className="text-black dark:text-custom-orange bg-custom-orange dark:bg-black rounded-full hover:scale-105 transition ease-linear duration-200 p-2"
         >
           <FaVolumeUp size={16} />
         </button>
+
         {showVolumeControl && (
           <div className="absolute flex items-center justify-center p-2 bg-black dark:bg-custom-orange rounded-lg shadow-md right-[10px] bottom-8 h-32">
             <div
